@@ -34,6 +34,7 @@ let StyledIdentityTemplate = styled.div`
   h3 {
     margin: 0px;
     padding: 0px;
+
     :hover {
       animation: ${jitter} 0.2s ease infinite;
     }
@@ -111,7 +112,6 @@ export let StyledMessageTemplate = styled.div`
     left: 0px;
     width: 100%;
   }
-  
 `;
 
 export let StyledParagraphTemplate = styled.div`

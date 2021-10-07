@@ -1,24 +1,53 @@
 import React from "react";
-import StyledSettingsModal, { StyledPalette, StyledPreivew } from "./Styles";
+import StyledSettingsModal, {
+  StyledPalette,
+  StyledPreivew,
+  StyledTexture,
+} from "./Styles";
 import { Field, Form, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import {
   changeBg,
   changeTemplateStyle,
+  changeTexture,
 } from "../../features/settings/themeSlice";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { toggleSettings } from "../../features/settings/settings";
 import { changeText } from "../../features/userInputs/inputSlice";
+import { StyledButton } from "../../globalStyles/GenericButton";
+import { useEffect } from "react";
+import { useRef } from "react";
 function SettingsModal() {
   //get redux initialValues;
-
+  let [hoverDescription, setHoverDescription] = useState(null);
   let dispatch = useDispatch();
   let theme = useSelector((state) => state.theme);
   let settingsOpen = useSelector((state) => state.settings.settingsOpen);
+  let descriptionRef = useRef(null);
   let initialValues = {
     bgColor: theme.bgColor,
     style: theme.templateStyle,
+    texture: theme.texture,
+  };
+
+  let onhover = (e) => {
+    if (e.target.closest("label")?.dataset.styleName == "identity") {
+      descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
+      setHoverDescription("Make an Impact");
+      console.log("hm");
+    } else if (e.target.closest("label")?.dataset.styleName == "message") {
+      descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
+      setHoverDescription("Short and sweet");
+      console.log("hdm");
+    } else if (e.target.closest("label")?.dataset.styleName == "paragraph") {
+      descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
+      setHoverDescription("Gimme the essay");
+      console.log("hmaq");
+    } else {
+      descriptionRef.current.style.background = "rgba(0,0,0,0.0)";
+      setHoverDescription(null);
+    }
   };
 
   if (settingsOpen) {
@@ -29,8 +58,9 @@ function SettingsModal() {
           onSubmit={(value) => {
             dispatch(changeBg(value.bgColor));
             dispatch(changeTemplateStyle(value.style));
+            dispatch(changeTexture(value.texture));
             dispatch(toggleSettings());
-            //reset content if switch to new slide
+            //reset content if switch to new sldie
             if (theme.templateStyle != value.style) {
               dispatch(
                 changeText({
@@ -42,9 +72,30 @@ function SettingsModal() {
             }
           }}
         >
-          <Form>
+          <Form onMouseOver={onhover}>
             <h1 className="formTitle">Settings</h1>
-            <h2 className="themeSect">Theme</h2>
+            <h2 className="themeSect">Style</h2>
+            <section className="styleSection">
+              <label className="styleLabels" data-style-name="identity">
+                <Field type="radio" name="style" value="identity" />
+                <span>Identity</span>
+              </label>
+              <label className="styleLabels" data-style-name="message">
+                <Field type="radio" name="style" value="message" />
+                <span>Message</span>
+              </label>
+              <label className="styleLabels" data-style-name="paragraph">
+                <Field type="radio" name="style" value="paragraph" />
+                <span>Excerpt</span>
+              </label>
+            </section>
+            <section ref={descriptionRef} className="description">
+              <div>{hoverDescription ? hoverDescription : null}</div>
+            </section>
+            <section>
+              <div>Remove black bars</div>
+            </section>
+            <h2 className="themeSect">Colors</h2>
             <section className="themeSection">
               <label className="colorLabels">
                 <Field type="radio" name="bgColor" value="red" />
@@ -53,10 +104,6 @@ function SettingsModal() {
               <label className="colorLabels">
                 <Field type="radio" name="bgColor" value="lilac" />
                 <StyledPalette color="lilac" className="color"></StyledPalette>
-              </label>
-              <label>
-                <Field type="radio" name="bgColor" value="blue" />
-                <StyledPalette color="blue" className="color"></StyledPalette>
               </label>
               <label className="colorLabels">
                 <Field type="radio" name="bgColor" value="peach" />
@@ -87,28 +134,52 @@ function SettingsModal() {
               </label>
             </section>
             <h2 className="themeSect">Texture</h2>
-            <h2 className="themeSect">Style</h2>
-            <section className="styleSection">
-              <label>
-                <Field type="radio" name="style" value="identity" />
-                <span>Identity</span>
-                <StyledPreivew />
+            <section className="textureSection">
+              <label classNAme="textureLabels">
+                <Field type="radio" name="texture" value="horizontalTexture" />
+                <StyledTexture texture="horizontalTexture" />
               </label>
-              <label>
-                <Field type="radio" name="style" value="message" />
-                <span>Message</span>
-                <StyledPreivew />
+              <label classNAme="textureLabels">
+                <Field type="radio" name="texture" value="cat" />
+                <StyledTexture texture="cat" />
               </label>
-              <label>
-                <Field type="radio" name="style" value="paragraph" />
-                <span>Excerpt</span>
-                <StyledPreivew />
+              <label className="textureLabels">
+                <Field type="radio" name="texture" value="blood" />
+                <StyledTexture texture="blood" />
+              </label>
+              <label className="textureLabels">
+                <Field type="radio" name="texture" value="plastic" />
+                <StyledTexture texture="plastic" />
+              </label>
+              <label className="textureLabels">
+                <Field type="radio" name="texture" value="water" />
+                <StyledTexture texture="water" />
+              </label>
+              <label className="textureLabels">
+                <Field type="radio" name="texture" value="ripple" />
+                <StyledTexture texture="ripple" />
+              </label>
+              <label className="textureLabels">
+                <Field type="radio" name="texture" value="snail" />
+                <StyledTexture texture="snail" />
+              </label>
+              <label className="textureLabels">
+                <Field type="radio" name="texture" value="crab" />
+                <StyledTexture texture="crab" />
+              </label>
+              <label className="textureLabels">
+                <Field type="radio" name="texture" value="snake" />
+                <StyledTexture texture="snake" />
               </label>
             </section>
-            <button type="submit">Save</button>
+            <div className="action">
+              <StyledButton onClick={() => dispatch(toggleSettings())}>
+                Close
+              </StyledButton>
+              <StyledButton type="submit">Save</StyledButton>
+            </div>
           </Form>
         </Formik>
-        <button onClick={() => dispatch(toggleSettings())}>close</button>
       </StyledSettingsModal>
     );
   } else {

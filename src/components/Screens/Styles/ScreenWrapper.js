@@ -1,6 +1,40 @@
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "../../../globalStyles/fadeInKeyframe";
-import texture from "../../../textures/horizotalTexturePattern.webp";
+import horizontalTexture from "../../../textures/horizotalTexturePattern.webp";
+import plastic from "../../../textures/plastic_landscape.webp";
+import water from "../../../textures/water.webp";
+import ripple from "../../../textures/ripple.webp";
+import snail from "../../../textures/snail.png";
+import cat from "../../../textures/cat.png";
+import snake from "../../../textures/snake.webp";
+import crab from "../../../textures/crab.webp";
+import monkey from "../../../textures/monkey.webp";
+import blood from "../../../textures/blood.webp";
+
+
+let theme = {
+  horizontalTexture,
+  plastic,
+  water,
+  ripple,
+  snail,
+  cat,
+  snake,
+  crab,
+  monkey,
+  blood,
+};
+
+
+let jitter = keyframes`
+from {
+    transform: scaleY(0.9);
+}
+
+to {
+    transform: scaleY(1);
+}
+`;
 
 let StyledScreenWrapper = styled.div`
   height: 100%;
@@ -11,14 +45,25 @@ let StyledScreenWrapper = styled.div`
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-position: center;
-  background-size: cover;
+  background-attachment: fixed;
+
+  @media only screen and (min-height: 500px) and (max-width: 1280px) {
+    background-size: 340% auto;
+  }
+  background-size: 100% auto;
+  @media only screen and (min-height: 1000px) and (min-width: 1080px) {
+    background-size: 110% auto;
+  }
   background-color: ${(props) => props.theme[props.bgColor].bg};
-  background-image: url(${texture}); //conditional render texture
+  background-image: ${(props) => `url(${theme[props.texture]})`}; //conditional render texture
   background-blend-mode: multiply;
   pointer-events: none;
+
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  animation: ${jitter} 0.5s ease infinite revers;
   z-index: -1;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 `;
 
 let expand = keyframes`
@@ -47,7 +92,7 @@ export let StyledContainer = styled.div`
     align-items: center;
     flex-direction: column;
     position: relative;
-    font-weight: bold;
+
     input {
       background: transparent;
       border-style: none;
@@ -89,16 +134,17 @@ export let StyledContainer = styled.div`
   //tooltip styles
   .showEdit {
     pointer-events: none;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 1);
     color: white;
     padding: 5px 5px;
     width: 100px;
-    height: 20px;
+    /* height: 20px; */
     display: none;
     /* width: 80px; */
     animation: ${fadeIn} 0.5s ease;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     border-radius: 2px;
+    font-weight: bold;
   }
 
   .blackbars {
