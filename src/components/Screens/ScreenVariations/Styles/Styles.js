@@ -118,13 +118,44 @@ export let StyledParagraphTemplate = styled.div`
   //takes the current theme
   width: 100%;
   height: 100%;
-
   color: white;
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  form {
+    width: calc(100% - 100px);
+    height: 20vw;
+    padding: 100px;
+  }
+  textarea {
+    height: 100%;
+    width: 100%;
+    line-height: 50px;
+    font-size: 25px;
+    letter-spacing: 15px;
+    background-color: transparent;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    border: 0px solid transparent;
+    :focus {
+      outline: none;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    overflow-y: scroll;
+    scrollbar-color: gray rgba(0, 0, 0, 0);
+    ::-webkit-scrollbar {
+      background-color: rgba(0, 0, 0, 0);
+      width: 12px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.33333);
+      border-radius: 1.25em /* 20px / 16px */;
+      width: 215px;
+    }
+  }
 
   div {
     margin: 0px;

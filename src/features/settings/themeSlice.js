@@ -6,7 +6,8 @@ export const themeSlice = createSlice({
     bgColor: "red",
     templateStyle: "message",
     inverted: false,
-    texture: "horizontalTexture"
+    texture: "horizontalTexture",
+    blackBars: true,
   },
   reducers: {
     changeBg: (state, action) => {
@@ -16,15 +17,18 @@ export const themeSlice = createSlice({
     changeTemplateStyle: (state, action) => {
       state.templateStyle = action.payload;
     },
-    invert: (state) => {
-      state.invert = !state.invert;
+    invert: (state,action) => {
+      state.invert = !action.invert;
     },
     changeTexture: (state, action) => {
       state.texture = action.payload
+    },
+    toggleblackBars: (state, action) => {
+      state.blackBars = action.payload
     }
   },
 });
 
-export const { changeBg, changeTemplateStyle, invert, changeTexture } = themeSlice.actions;
+export const { changeBg, changeTemplateStyle, invert, changeTexture, toggleblackBars } = themeSlice.actions;
 
 export default themeSlice.reducer;

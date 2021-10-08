@@ -43,7 +43,7 @@ function ScreenLoader() {
   })
 
   return (
-    <StyledContainer >
+    <StyledContainer blackBars={theme.blackBars} >
       <div className="blackbars" data-testid="blackbars"></div>
       <StyledScreenWrapper
         ref={elem}

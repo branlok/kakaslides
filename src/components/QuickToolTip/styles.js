@@ -24,7 +24,7 @@ let fadeIn = keyframes`
 
 export let StyledTooltip = styled.div`
   position: absolute;
-  top: 100px;
+  top: ${(props) => (props.blackBars ? "100px" : "0px")};
   right: 0px;
   height: 100px;
   padding: 15px;

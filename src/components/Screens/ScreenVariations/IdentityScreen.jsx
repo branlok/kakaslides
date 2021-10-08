@@ -34,6 +34,8 @@ function IdentityScreen() {
       refContainer.current.style.transition = "0.2s";
     }
   };
+
+
   return (
     <StyledIdentityTemplate data-testid="identityScreen">
       {!editMode ? (
@@ -54,7 +56,7 @@ function IdentityScreen() {
             {userText.numberText || defaultValues.numberText}
           </h3>
           <div ref={refContainer} className="showEdit">
-            Content Editable
+
           </div>
         </>
       ) : (

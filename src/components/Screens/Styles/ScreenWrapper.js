@@ -11,7 +11,6 @@ import crab from "../../../textures/crab.webp";
 import monkey from "../../../textures/monkey.webp";
 import blood from "../../../textures/blood.webp";
 
-
 let theme = {
   horizontalTexture,
   plastic,
@@ -24,7 +23,6 @@ let theme = {
   monkey,
   blood,
 };
-
 
 let jitter = keyframes`
 from {
@@ -45,17 +43,17 @@ let StyledScreenWrapper = styled.div`
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-attachment: fixed;
+  @media only screen and (max-height: 700px) and (max-width: 1080px) {
+    background-size: 300% auto;
+  }
+  /* background-size: 100% auto; */
+  @media only screen and (min-height: 700px) and (min-width: 1080px) {
+    background-size: 150% auto;
+  }
 
-  @media only screen and (min-height: 500px) and (max-width: 1280px) {
-    background-size: 340% auto;
-  }
-  background-size: 100% auto;
-  @media only screen and (min-height: 1000px) and (min-width: 1080px) {
-    background-size: 110% auto;
-  }
   background-color: ${(props) => props.theme[props.bgColor].bg};
-  background-image: ${(props) => `url(${theme[props.texture]})`}; //conditional render texture
+  background-image: ${(props) =>
+    `url(${theme[props.texture]})`}; //conditional render texture
   background-blend-mode: multiply;
   pointer-events: none;
 
@@ -151,6 +149,7 @@ export let StyledContainer = styled.div`
     height: 130px;
     width: 100%;
     background: black;
+    display: ${(props) => (props.blackBars ? "block" : "none")};
     animation: ${expand} 3s ease-in-out forwards;
     transform-origin: top;
   }

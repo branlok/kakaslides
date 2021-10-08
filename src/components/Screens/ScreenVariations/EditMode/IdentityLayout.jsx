@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { changeText } from "../../../../features/userInputs/inputSlice";
 import { useSelector } from "react-redux";
 import getDefaultText from "../../../../utils/getDefaultText";
+import { StyledButtonLite } from "../../../../globalStyles/GenericButton";
 
 function IdentityLayout({ toggler, styleType }) {
   let main = useRef(null);
@@ -64,9 +65,9 @@ function IdentityLayout({ toggler, styleType }) {
             />
             <Field className="secondaryTextInput" name="secondaryText"></Field>
             <Field className="mainNumberInput" name="mainNumberInput"></Field>
-            <button className="saveEdit" type="submit">
+            <StyledButtonLite type="submit">
               Save
-            </button>
+            </StyledButtonLite>
           </Form>
         </Formik>
       );
@@ -84,9 +85,9 @@ function IdentityLayout({ toggler, styleType }) {
             <Field className="secondaryTextInput" name="secondaryText"></Field>
             <Field className="mainNumberInput" name="mainNumberInput"></Field>
             <footer>動書番戦 無シ</footer>
-            <button className="saveEdit" type="submit">
+            <StyledButtonLite type="submit">
               Save
-            </button>
+            </StyledButtonLite>
           </Form>
         </Formik>
       );

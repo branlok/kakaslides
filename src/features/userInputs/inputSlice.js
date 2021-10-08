@@ -6,6 +6,7 @@ export const inputSlice = createSlice({
     mainText: null,
     secondaryText: null,
     numberText: null,
+    longText: '驚かない所をみると知ってたのね。「どうかしたの？」と小さい白いウサギが聞きました。私たちがそこへ行くかどうかを決めるのは君の責任だ。イベントが成功したのは貴殿のたゆみ無い努力と献身のおかげです。私たちがそこへ行くかどうかを決めるのは君の責任だ。',
   },
   reducers: {
     changeText: (state, action) => {
@@ -13,8 +14,11 @@ export const inputSlice = createSlice({
       state.secondaryText = action.payload.secondaryText;
       state.numberText = action.payload.numberText;
     },
+    changeLongText: (state, action) => {
+      state.longText = action.payload;
+    },
   },
 });
 
-export const { changeText } = inputSlice.actions;
+export const { changeText, changeLongText } = inputSlice.actions;
 export default inputSlice.reducer;

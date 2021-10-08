@@ -123,10 +123,11 @@ let defaultValues = {
     {
       color: "purple",
       mainText: "紫 齣",
-      secondaryText: "murasaki",
+      secondaryText: "murasaki.",
       numberText: "(039)",
     },
   ],
+
 };
 
 export default getDefaultText;

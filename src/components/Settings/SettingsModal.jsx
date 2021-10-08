@@ -10,14 +10,16 @@ import {
   changeBg,
   changeTemplateStyle,
   changeTexture,
+  invert,
+  toggleblackBars,
 } from "../../features/settings/themeSlice";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { toggleSettings } from "../../features/settings/settings";
 import { changeText } from "../../features/userInputs/inputSlice";
 import { StyledButton } from "../../globalStyles/GenericButton";
-import { useEffect } from "react";
 import { useRef } from "react";
+import Toggle from "./Accessory/Toggle";
 function SettingsModal() {
   //get redux initialValues;
   let [hoverDescription, setHoverDescription] = useState(null);
@@ -29,23 +31,26 @@ function SettingsModal() {
     bgColor: theme.bgColor,
     style: theme.templateStyle,
     texture: theme.texture,
+    blackBars: theme.blackBars,
+    inverted: false,
   };
 
   let onhover = (e) => {
-    if (e.target.closest("label")?.dataset.styleName == "identity") {
+    if (e.target.closest(".styleLabels")?.dataset.styleName == "identity") {
       descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
       setHoverDescription("Make an Impact");
       console.log("hm");
-    } else if (e.target.closest("label")?.dataset.styleName == "message") {
+    } else if (e.target.closest(".styleLabels")?.dataset.styleName == "message") {
       descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
       setHoverDescription("Short and sweet");
       console.log("hdm");
-    } else if (e.target.closest("label")?.dataset.styleName == "paragraph") {
+    } else if (e.target.closest(".styleLabels")?.dataset.styleName == "paragraph") {
       descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
       setHoverDescription("Gimme the essay");
       console.log("hmaq");
     } else {
       descriptionRef.current.style.background = "rgba(0,0,0,0.0)";
+
       setHoverDescription(null);
     }
   };
@@ -54,12 +59,16 @@ function SettingsModal() {
     return (
       <StyledSettingsModal className="blurred-container">
         <Formik
+          className="formikWrapper"
           initialValues={initialValues}
           onSubmit={(value) => {
             dispatch(changeBg(value.bgColor));
             dispatch(changeTemplateStyle(value.style));
             dispatch(changeTexture(value.texture));
+            dispatch(toggleblackBars(value.blackBars));
+            // dispatch(invert(value.blackBars));
             dispatch(toggleSettings());
+
             //reset content if switch to new sldie
             if (theme.templateStyle != value.style) {
               dispatch(
@@ -92,8 +101,15 @@ function SettingsModal() {
             <section ref={descriptionRef} className="description">
               <div>{hoverDescription ? hoverDescription : null}</div>
             </section>
-            <section>
-              <div>Remove black bars</div>
+            <section className="otherSection">
+              <div className="toggleWrapper">
+                Blackbars
+                <Toggle toggleOption={"blackBars"} />
+              </div>
+              {/* <div className="toggleWrapper">
+                Reverse Text and Background Colors
+                <Toggle toggleOption={"inverted"} target={theme.inverted} />
+              </div> */}
             </section>
             <h2 className="themeSect">Colors</h2>
             <section className="themeSection">
