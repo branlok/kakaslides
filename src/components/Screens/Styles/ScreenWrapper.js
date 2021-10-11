@@ -51,9 +51,12 @@ let StyledScreenWrapper = styled.div`
     background-size: 150% auto;
   }
 
-  background-color: ${(props) => props.theme[props.bgColor].bg};
+  background-color: ${(props) => props.theme.primary.bg};
+  /* background-image: url("https://davidmz.github.io/apng-canvas/images/APNG-cube.png"); */
   background-image: ${(props) =>
-    `url(${theme[props.texture]})`}; //conditional render texture
+    props.texture === "custom"
+      ? `url(${props.customUrl})`
+      : `url(${theme[props.texture]})`}; //conditional render texture
   background-blend-mode: multiply;
   pointer-events: none;
 

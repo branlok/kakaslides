@@ -8,6 +8,7 @@ export const themeSlice = createSlice({
     inverted: false,
     texture: "horizontalTexture",
     blackBars: true,
+    custom: "",
   },
   reducers: {
     changeBg: (state, action) => {
@@ -25,10 +26,13 @@ export const themeSlice = createSlice({
     },
     toggleblackBars: (state, action) => {
       state.blackBars = action.payload
+    },
+    setCustom: (state, action) => {
+      state.custom = action.payload;
     }
   },
 });
 
-export const { changeBg, changeTemplateStyle, invert, changeTexture, toggleblackBars } = themeSlice.actions;
+export const { changeBg, changeTemplateStyle, invert, changeTexture, toggleblackBars, setCustom } = themeSlice.actions;
 
 export default themeSlice.reducer;

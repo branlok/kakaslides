@@ -197,7 +197,7 @@ export let StyledPalette = styled.div`
   height: 100%;
   margin: 0px 4px;
   border-radius: 3px;
-  background-color: ${(props) => props.theme[props.color].bg};
+ background-color: ${(props) => props.theme.alternate[props.color].bg};
   outline: 2px solid transparent;
   cursor: pointer;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.19), 0 0px 6px rgba(0, 0, 0, 0.13);

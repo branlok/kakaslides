@@ -34,7 +34,6 @@ let StyledIdentityTemplate = styled.div`
   h3 {
     margin: 0px;
     padding: 0px;
-
     :hover {
       animation: ${jitter} 0.2s ease infinite;
     }
@@ -49,6 +48,7 @@ let StyledIdentityTemplate = styled.div`
   .mainTextInput {
     font-size: 250px;
     width: 100vw;
+
   }
   .mainText {
     font-size: 250px;
@@ -168,6 +168,7 @@ export let StyledParagraphTemplate = styled.div`
     letter-spacing: 15px;
     p {
       line-height: 50px;
+      text-shadow: 2px 2px black !important;
     }
     :hover {
       animation: ${jitter} 0.2s ease infinite;

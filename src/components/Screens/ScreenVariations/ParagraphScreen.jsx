@@ -22,20 +22,16 @@ function ParagraphScreen() {
         <Formik
           initialValues={{ longText: input.longText }}
           onSubmit={(val) => {
-              if( val.longText.length = 0) {
-                val.longText = input.longText;
-              }
+            if (val.longText.length === 0) {
+              val.longText = input.longText;
+              setEditMode(false);
+            }
             dispatch(changeLongText(val.longText));
             setEditMode(false);
           }}
         >
           <Form>
-            <Field
-              autoFocus
-              component="textarea"
-              name="longText"
-              maxlength="150"
-            ></Field>
+            <Field autoFocus component="textarea" spellCheck={false} name="longText" ></Field>
             <StyledButtonLite className="save" type="submit">
               Save
             </StyledButtonLite>

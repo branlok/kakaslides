@@ -30,11 +30,13 @@ export let StyledTooltip = styled.div`
   padding: 15px;
   width: calc(100% - 30px);
   display: flex;
+  justify-content: flex-end;
   /* background-color: rgba(0, 0, 0, 0.1); */
   /* animation: ${fadeInOut} 10s ease; */
   transition: 0.5s;
   .centering-wrapper {
     width: 100%;
+    padding-right: 5px;
     height: 100%;
     display: flex;
     /* justify-content: flex-end; */
@@ -46,7 +48,6 @@ export let StyledTooltip = styled.div`
       width: 100%;
       display: flex;
       justify-content: flex-end;
-
       .hide-svg {
         height: 100%;
         /* width: 100%; */
@@ -85,11 +86,31 @@ export let StyledTooltip = styled.div`
           color: white;
         }
       }
+      .changeUrlBtn {
+        margin: 0px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 5px 10px;
+        width: 200px;
+        border-radius: 5px;
+        text-align: left;
+        background-color: rgba(0, 0, 0, 0.4);
+        :focus {
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+    .background-form-wrapper {
+      margin-top: 5px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      background-color: rgba(0, 0, 0, 0.3);
     }
   }
   :hover {
     opacity: 1;
-    transform: translateY(0px);
     transition: 0.2s;
   }
   .themeSection {
@@ -106,16 +127,14 @@ export let StyledColorButton = styled.button`
   background-color: transparent;
   cursor: pointer;
   transition: 0.1s;
-  /* border-radius: 10px; */
-  /* border-right: 4px solid ${(props) => props.theme[props.color].bg}; */
   border-style: none;
-  background-color: ${(props) => props.theme[props.color].bg};
+  background-color: ${(props) => props.theme.alternate[props.color].bg};
   border-top: 2px solid white;
-  :first-child {
+  :last-child {
     margin-right: 0px;
   }
   :hover {
-    background-color: ${(props) => props.theme[props.color].bg};
+    background-color: ${(props) => props.theme.alternate[props.color].bg};
     transform: scaleY(1.6);
   }
   :active {

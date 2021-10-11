@@ -9,9 +9,10 @@ import { ReactComponent as Hide } from "../../globalStyles/eyeHide.svg";
 import { toggleSettings } from "../../features/settings/settings";
 import { useSelector } from "react-redux";
 import theme from "../../globalStyles/theme";
+import BackgroundForm from "./backgroundForm/BackgroundForm";
 function Toolbar() {
   let dispatch = useDispatch();
-  let blackBars = useSelector(state => state.theme.blackBars);
+  let blackBars = useSelector((state) => state.theme.blackBars);
   let [toolbarOpened, setToolbarOpened] = useState(false);
   let check = (e) => {
     // let colorList = ["ref, lilac, peach, green, pruple, black, offwhite, orange"];
@@ -20,7 +21,11 @@ function Toolbar() {
     }
   };
   return (
-    <StyledTooltip onClick={check} blackBars={blackBars} data-testid="toolbarWrapper">
+    <StyledTooltip
+      onClick={check}
+      blackBars={blackBars}
+      data-testid="toolbarWrapper"
+    >
       {toolbarOpened ? (
         <div className="centering-wrapper">
           <div
@@ -44,6 +49,9 @@ function Toolbar() {
             <button data-testid="close" onClick={() => setToolbarOpened(false)}>
               <Hide className="hide-svg" /> Hide
             </button>
+          </div>
+          <div className="front-screen-options">
+            <BackgroundForm />
           </div>
         </div>
       ) : (

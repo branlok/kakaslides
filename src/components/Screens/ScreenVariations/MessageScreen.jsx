@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useSelector } from "react-redux";
 import getDefaultText from "../../../utils/getDefaultText";
-import { handleHoverToolTip } from "../../../utils/hoverTooltip";
 import IdentityLayout from "./EditMode/IdentityLayout";
 import { StyledMessageTemplate } from "./Styles/Styles";
 
