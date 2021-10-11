@@ -17,8 +17,10 @@ function BackgroundForm() {
       <Formik
         initialValues={{ texture: currentCustom }}
         onSubmit={(val) => {
-          dispatch(changeTexture("custom"));
-          dispatch(setCustom(val.texture));
+          if (val.texture.length > 0) {
+            dispatch(changeTexture("custom"));
+            dispatch(setCustom(val.texture));
+          }
           setShowInput(false);
         }}
       >
@@ -32,7 +34,11 @@ function BackgroundForm() {
       </Formik>
     );
   } else {
-   return <button className="changeUrlBtn" onClick={() =>  setShowInput(true)}>Background URL</button>
+    return (
+      <button className="changeUrlBtn" onClick={() => setShowInput(true)}>
+        Background URL
+      </button>
+    );
   }
 }
 

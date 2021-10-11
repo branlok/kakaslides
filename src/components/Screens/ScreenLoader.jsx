@@ -8,7 +8,7 @@ import MessageScreen from "./ScreenVariations/MessageScreen";
 import ParagraphScreen from "./ScreenVariations/ParagraphScreen";
 import StyledScreenWrapper, { StyledContainer } from "./Styles/ScreenWrapper";
 
-function ScreenLoader() {
+function ScreenLoader({ generateImage, status }) {
   let theme = useSelector((state) => state.theme);
   // let chosenStyle = useSelector((state) => state.theme.templateStyle);
   let screen;
@@ -51,10 +51,14 @@ function ScreenLoader() {
         ref={elem}
         texture={theme.texture}
         bgColor={theme.bgColor}
-        customUrl={theme.custom}
+        customUrl={
+          status == "loading"
+            ? "https://cors-anywhere-tlis.herokuapp.com/" + theme.custom
+            : theme.custom
+        }
         data-testid="screenbg"
       />
-      <Toolbar />
+      <Toolbar status={status} generateImage={generateImage} />
       {screen}
       <div className="blackbars" data-testid="blackbars"></div>
     </StyledContainer>

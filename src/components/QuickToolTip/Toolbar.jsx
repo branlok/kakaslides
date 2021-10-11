@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -10,9 +10,11 @@ import { toggleSettings } from "../../features/settings/settings";
 import { useSelector } from "react-redux";
 import theme from "../../globalStyles/theme";
 import BackgroundForm from "./backgroundForm/BackgroundForm";
-function Toolbar() {
+function Toolbar({ generateImage }) {
   let dispatch = useDispatch();
   let blackBars = useSelector((state) => state.theme.blackBars);
+  // let downloadRef = useRef(null);
+  let [takingScreenshot, setTakingScreenshot] = useState(false);
   let [toolbarOpened, setToolbarOpened] = useState(false);
   let check = (e) => {
     // let colorList = ["ref, lilac, peach, green, pruple, black, offwhite, orange"];
@@ -20,52 +22,77 @@ function Toolbar() {
       dispatch(changeBg(e.target.getAttribute("color")));
     }
   };
-  return (
-    <StyledTooltip
-      onClick={check}
-      blackBars={blackBars}
-      data-testid="toolbarWrapper"
-    >
-      {toolbarOpened ? (
-        <div className="centering-wrapper">
-          <div
-            className="themeSection"
-            role="listbox"
-            aria-labelledby="colorList"
-          >
-            <StyledColorButton color="red"></StyledColorButton>
-            <StyledColorButton color="lilac"></StyledColorButton>
-            <StyledColorButton color="peach"></StyledColorButton>
-            <StyledColorButton color="green"></StyledColorButton>
-            <StyledColorButton color="purple"></StyledColorButton>
-            <StyledColorButton color="black"></StyledColorButton>
-            <StyledColorButton color="offWhite"></StyledColorButton>
-            <StyledColorButton color="orange"></StyledColorButton>
-          </div>
 
-          <div className="front-screen-options">
-            <button>Download</button>
-            <button onClick={() => dispatch(toggleSettings())}>Settings</button>
-            <button data-testid="close" onClick={() => setToolbarOpened(false)}>
-              <Hide className="hide-svg" /> Hide
-            </button>
+  useEffect(() => {
+    //hide for split second to download screen
+    if (takingScreenshot) {
+      generateImage(setTakingScreenshot);
+      // (false);
+    }
+  }, [takingScreenshot]);
+
+  if (!takingScreenshot) {
+    return (
+      <StyledTooltip
+        onClick={check}
+        blackBars={blackBars}
+        data-testid="toolbarWrapper"
+      >
+        {toolbarOpened ? (
+          <div className="centering-wrapper">
+            <div
+              className="themeSection"
+              role="listbox"
+              aria-labelledby="colorList"
+            >
+              <StyledColorButton color="red"></StyledColorButton>
+              <StyledColorButton color="lilac"></StyledColorButton>
+              <StyledColorButton color="peach"></StyledColorButton>
+              <StyledColorButton color="green"></StyledColorButton>
+              <StyledColorButton color="purple"></StyledColorButton>
+              <StyledColorButton color="black"></StyledColorButton>
+              <StyledColorButton color="offWhite"></StyledColorButton>
+              <StyledColorButton color="orange"></StyledColorButton>
+            </div>
+
+            <div className="front-screen-options">
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setTakingScreenshot(true);
+                }}
+              >
+                Download
+              </button>
+              <button onClick={() => dispatch(toggleSettings())}>
+                Settings
+              </button>
+              <button
+                data-testid="close"
+                onClick={() => setToolbarOpened(false)}
+              >
+                <Hide className="hide-svg" /> Hide
+              </button>
+            </div>
+            <div className="front-screen-options">
+              <BackgroundForm />
+            </div>
           </div>
-          <div className="front-screen-options">
-            <BackgroundForm />
+        ) : (
+          <div className="centering-wrapper">
+            <StyledPromptButton
+              data-testid="openToolbarBtn"
+              onClick={() => setToolbarOpened(true)}
+            >
+              click here or press space to toggle toolbar
+            </StyledPromptButton>
           </div>
-        </div>
-      ) : (
-        <div className="centering-wrapper">
-          <StyledPromptButton
-            data-testid="openToolbarBtn"
-            onClick={() => setToolbarOpened(true)}
-          >
-            click here or press space to toggle toolbar
-          </StyledPromptButton>
-        </div>
-      )}
-    </StyledTooltip>
-  );
+        )}
+      </StyledTooltip>
+    );
+  } else {
+    return null;
+  }
 }
 
 export default Toolbar;
