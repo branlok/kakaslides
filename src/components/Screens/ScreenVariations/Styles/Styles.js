@@ -57,7 +57,6 @@ export let StyledMessageTemplate = styled.div`
   //takes the current theme
   width: 100%;
   height: 100%;
-
   color: white;
   display: flex;
   justify-content: center;
@@ -95,8 +94,8 @@ export let StyledMessageTemplate = styled.div`
   }
   footer {
     position: absolute;
-    bottom: 10px;
-    font-size: 25px;
+    bottom: 30px;
+    font-size: 20px;
     left: 0px;
     width: 100%;
   }
