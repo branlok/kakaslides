@@ -36,7 +36,7 @@ to {
 `;
 
 let StyledScreenWrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   position: absolute;
   top: 0px;
