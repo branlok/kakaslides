@@ -84,7 +84,7 @@ function IdentityLayout({ toggler, styleType }) {
             />
             <Field className="secondaryTextInput" name="secondaryText"></Field>
             <Field className="mainNumberInput" name="mainNumberInput"></Field>
-            <footer>動書番戦 無シ</footer>
+
             <StyledButtonLite type="submit">
               Save
             </StyledButtonLite>

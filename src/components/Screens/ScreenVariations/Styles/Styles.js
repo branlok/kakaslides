@@ -63,6 +63,9 @@ export let StyledMessageTemplate = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  
+
 
   h1,
   h2,
@@ -91,8 +94,8 @@ export let StyledMessageTemplate = styled.div`
     font-family: "Times New Roman", Times, serif;
   }
   footer {
-    position: fixed;
-    bottom: 120px;
+    position: absolute;
+    bottom: 10px;
     font-size: 25px;
     left: 0px;
     width: 100%;
@@ -173,13 +176,13 @@ export let StyledParagraphTemplate = styled.div`
     line-height: 50px;
     font-family: "Times New Roman", Times, serif;
   } */
-  footer {
+  /* footer {
     position: absolute;
     bottom: 120px;
     font-size: 25px;
     left: 0px;
     width: 100%;
-  }
+  } */
 `;
 
 export default StyledIdentityTemplate;

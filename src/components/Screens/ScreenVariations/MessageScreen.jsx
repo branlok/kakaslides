@@ -63,7 +63,10 @@ function MessageScreen() {
           </div>
         </>
       ) : (
+        <>
         <IdentityLayout toggler={setEditMode} styleType="message" />
+        <footer>動書番戦 無シ</footer>
+        </>
       )}
     </StyledMessageTemplate>
   );
