@@ -48,6 +48,7 @@ let StyledSettingsModal = styled.div`
   font-family: ScheherazadeNew;
   overflow: hidden;
   animation: ${fadeIn} 0.5s ease-in-out forwards;
+  z-index: 5;
   label {
     cursor: pointer;
   }
@@ -181,7 +182,9 @@ let StyledSettingsModal = styled.div`
       width: 215px;
     }
   }
-
+  h1 {
+    padding-left: 5px;
+  }
   h2 {
     padding-left: 5px; //fixing the centering
     text-align: center;

@@ -31,8 +31,9 @@ export let StyledTooltip = styled.div`
   width: calc(100% - 30px);
   display: flex;
   justify-content: flex-end;
+  z-index: 2;
   /* background-color: rgba(0, 0, 0, 0.1); */
-  /* animation: ${fadeInOut} 10s ease; */
+  animation: ${fadeIn} 0.5s ease;
   transition: 0.5s;
   .centering-wrapper {
     width: 100%;
@@ -67,10 +68,11 @@ export let StyledTooltip = styled.div`
         padding: 5px 10px;
         transition: 0.2s;
         cursor: pointer;
-        color: rgba(255, 255, 255, 0.5);
+        /* color: rgba(255, 255, 255, 0.5); */
         display: flex;
         justify-content: center;
         align-items: center;
+        color:  ${props => props.theme.primary.bg === "#F9F4F8" ? "rgba(255, 255, 255, 0.9);" : "rgba(255, 255, 255, 0.5);" };
         :last-child {
           margin-right: 0px;
         }
@@ -100,6 +102,20 @@ export let StyledTooltip = styled.div`
           background-color: rgba(0, 0, 0, 0.6);
         }
       }
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+        color: ${props => props.theme.primary.bg === "#F9F4F8" ? "gray" : "#e0e0e0" };
+        .github-svg {
+        height: 20px;
+        width: 20px;
+        border-radius: 5px;
+        fill: ${props => props.theme.primary.bg === "#F9F4F8" ? "gray" : "#e0e0e0" };
+      }
+      }
+
     }
     .background-form-wrapper {
       margin-top: 5px;
@@ -146,6 +162,8 @@ export let StyledPromptButton = styled.button`
   border-style: none;
   background-color: transparent;
   font-weight: bold;
-  color: rgba(255, 255, 255, 0.5);
+  /* color: rgba(255, 255, 255, 0.5); */
+  color: ${props => props.theme.primary.bg === "#F9F4F8" ? " rgba(0, 0, 0, 0.8);" : " rgba(255, 255, 255, 0.5);" };
   animation: ${fadeIn} 1s ease forwards;
+  cursor: pointer;
 `;

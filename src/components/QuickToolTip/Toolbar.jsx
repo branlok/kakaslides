@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useRef } from "react";
+
 import { useDispatch } from "react-redux";
 import { changeBg } from "../../features/settings/themeSlice";
-import { StyledPalette } from "../Settings/Styles";
+
 import { StyledColorButton, StyledPromptButton, StyledTooltip } from "./styles";
 import { ReactComponent as Hide } from "../../globalStyles/eyeHide.svg";
 import { toggleSettings } from "../../features/settings/settings";
 import { useSelector } from "react-redux";
-import theme from "../../globalStyles/theme";
+import {ReactComponent as Github} from "../../globalStyles/github.svg";
 import BackgroundForm from "./backgroundForm/BackgroundForm";
 function Toolbar({ generateImage }) {
   let dispatch = useDispatch();
@@ -77,6 +77,9 @@ function Toolbar({ generateImage }) {
             <div className="front-screen-options">
               <BackgroundForm />
             </div>
+            <div className="front-screen-options">
+              <a href="https://github.com/branlok/kakaslides" ><Github className="github-svg" />Github</a>
+            </div>
           </div>
         ) : (
           <div className="centering-wrapper">
@@ -84,7 +87,7 @@ function Toolbar({ generateImage }) {
               data-testid="openToolbarBtn"
               onClick={() => setToolbarOpened(true)}
             >
-              click here or press space to toggle toolbar
+              click here to toggle toolbar
             </StyledPromptButton>
           </div>
         )}
