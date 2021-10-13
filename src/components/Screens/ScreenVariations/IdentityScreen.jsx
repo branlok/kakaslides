@@ -14,7 +14,6 @@ function IdentityScreen() {
   const defaultValues = getDefaultText(bgColor, "identity");
 
   let handleHoverToolTip = (e) => {
-    console.log(e.type);
     if (e.type == "mouseenter") {
       refContainer.current.style.transform = "scale(1)";
       refContainer.current.style.transition = "0.3s";

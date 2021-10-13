@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { fadeIn } from "../../../globalStyles/fadeInKeyframe";
 import horizontalTexture from "../../../textures/horizotalTexturePattern.webp";
 import plastic from "../../../textures/plastic_landscape.webp";
@@ -10,6 +10,7 @@ import snake from "../../../textures/snake.webp";
 import crab from "../../../textures/crab.webp";
 import monkey from "../../../textures/monkey.webp";
 import blood from "../../../textures/blood.webp";
+import { jitterText } from "../../../globalStyles/jitterKeyframe";
 
 let theme = {
   horizontalTexture,
@@ -52,7 +53,7 @@ let StyledScreenWrapper = styled.div`
   }
 
   background-color: ${(props) => props.theme.primary.bg};
-  /* background-image: url("https://davidmz.github.io/apng-canvas/images/APNG-cube.png"); */
+  /* background-image: url("https://images.unsplash.com/photo-1634036711291-92f6b263de9d?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"); */
   background-image: ${(props) =>
     props.texture === "custom"
       ? `url(${props.customUrl})`
@@ -86,6 +87,11 @@ export let StyledContainer = styled.div`
   flex-direction: column;
   overflow: hidden;
 
+  h1,
+  h2,
+  h3 {
+    animation: ${props => props.jitter ?  css`${jitterText} 0.2s ease infinite;` : "none"};
+  }
   //styles when edit is toggled.
   form {
     display: flex;

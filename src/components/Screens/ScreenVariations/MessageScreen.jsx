@@ -10,12 +10,12 @@ function MessageScreen() {
     let refContainer = useRef(null);
 
   const [editMode, setEditMode] = useState(false);
-  let bgColor = useSelector((state) => state.theme.bgColor);
+  let theme = useSelector((state) => state.theme);
   let userText = useSelector((state) => state.inputs);
-  const defaultValues = getDefaultText(bgColor, "message");
+  const defaultValues = getDefaultText(theme.bgColor, "message");
 
   let handleHoverToolTip = (e) => {
-    console.log(e.type);
+
     if (e.type == "mouseenter") {
       refContainer.current.style.transform = "scale(1)";
       refContainer.current.style.transition = "0.3s";
@@ -37,7 +37,7 @@ function MessageScreen() {
   };
 
   return (
-    <StyledMessageTemplate data-testid="messageScreen">
+    <StyledMessageTemplate data-testid="messageScreen" jitter={theme.jitterDefault}>
       {!editMode ? (
         <>
           <h1

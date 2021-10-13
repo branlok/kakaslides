@@ -45,7 +45,7 @@ function ScreenLoader({ generateImage, status }) {
   });
 
   return (
-    <StyledContainer blackBars={theme.blackBars}>
+    <StyledContainer blackBars={theme.blackBars} jitter={theme.jitterDefault}>
       <div className="blackbars" data-testid="blackbars"></div>
       <StyledScreenWrapper
         ref={elem}

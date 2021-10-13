@@ -8,7 +8,8 @@ export const settingsSlice = createSlice({
   },
   reducers: {
     toggleSettings: (state, action) => {
-      state.settingsOpen = !state.settingsOpen;
+
+      state.settingsOpen = action.payload;
     },
   },
 });

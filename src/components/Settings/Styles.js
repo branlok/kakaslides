@@ -94,7 +94,9 @@ let StyledSettingsModal = styled.div`
     justify-content: center;
     align-items: center;
     height: 30px;
-
+    span {
+      border-bottom: 1px solid transparent;
+    }
     span:hover {
       border-bottom: 1px solid white;
     }
@@ -143,6 +145,7 @@ let StyledSettingsModal = styled.div`
     margin-bottom: 10px;
     height: 40px;
     font-size: 14px;
+    font-weight: bold;
     letter-spacing: 4px;
     color: rgba(255, 255, 255, 0.8);
     width: calc(100% - 40px);

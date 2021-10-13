@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import StyledSettingsModal, {
   StyledPalette,
   StyledPreivew,
@@ -11,6 +11,7 @@ import {
   changeTemplateStyle,
   changeTexture,
   invert,
+  setJitter,
   toggleblackBars,
 } from "../../features/settings/themeSlice";
 import { useSelector } from "react-redux";
@@ -33,21 +34,36 @@ function SettingsModal() {
     texture: theme.texture,
     blackBars: theme.blackBars,
     inverted: false,
+    jitterDefault: theme.jitterDefault
   };
+
+  useEffect(() => {
+    function onKeyup(e) {
+      if (e.key === "Escape") {
+        dispatch(toggleSettings(false));
+      }
+    }
+    window.addEventListener("keyup", onKeyup);
+    return () => window.removeEventListener("keyup", onKeyup);
+  }, []);
 
   let onhover = (e) => {
     if (e.target.closest(".styleLabels")?.dataset.styleName == "identity") {
       descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
-      setHoverDescription("Make an Impact");
-      console.log("hm");
-    } else if (e.target.closest(".styleLabels")?.dataset.styleName == "message") {
+      setHoverDescription("Large text");
+
+    } else if (
+      e.target.closest(".styleLabels")?.dataset.styleName == "message"
+    ) {
       descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
-      setHoverDescription("Short and sweet");
-      console.log("hdm");
-    } else if (e.target.closest(".styleLabels")?.dataset.styleName == "paragraph") {
+      setHoverDescription("Medium Text");
+
+    } else if (
+      e.target.closest(".styleLabels")?.dataset.styleName == "paragraph"
+    ) {
       descriptionRef.current.style.background = "rgba(0,0,0,0.2)";
-      setHoverDescription("Gimme the essay");
-      console.log("hmaq");
+      setHoverDescription("Small Text");
+
     } else {
       descriptionRef.current.style.background = "rgba(0,0,0,0.0)";
 
@@ -66,8 +82,9 @@ function SettingsModal() {
             dispatch(changeTemplateStyle(value.style));
             dispatch(changeTexture(value.texture));
             dispatch(toggleblackBars(value.blackBars));
+            dispatch(setJitter(value.jitterDefault));
             // dispatch(invert(value.blackBars));
-            dispatch(toggleSettings());
+            dispatch(toggleSettings(false));
 
             //reset content if switch to new sldie
             if (theme.templateStyle != value.style) {
@@ -106,10 +123,11 @@ function SettingsModal() {
                 Blackbars
                 <Toggle toggleOption={"blackBars"} />
               </div>
-              {/* <div className="toggleWrapper">
-                Reverse Text and Background Colors
-                <Toggle toggleOption={"inverted"} target={theme.inverted} />
-              </div> */}
+              <div className="toggleWrapper">
+                Always Shake Text
+                <Toggle toggleOption={"jitterDefault"} />
+              </div>
+
             </section>
             <h2 className="themeSect">Colors</h2>
             <section className="themeSection">
@@ -151,11 +169,11 @@ function SettingsModal() {
             </section>
             <h2 className="themeSect">Texture</h2>
             <section className="textureSection">
-              <label classNAme="textureLabels">
+              <label className="textureLabels">
                 <Field type="radio" name="texture" value="horizontalTexture" />
                 <StyledTexture texture="horizontalTexture" />
               </label>
-              <label classNAme="textureLabels">
+              <label className="textureLabels">
                 <Field type="radio" name="texture" value="cat" />
                 <StyledTexture texture="cat" />
               </label>
@@ -189,7 +207,7 @@ function SettingsModal() {
               </label>
             </section>
             <div className="action">
-              <StyledButton onClick={() => dispatch(toggleSettings())}>
+              <StyledButton onClick={() => dispatch(toggleSettings(false))}>
                 Close
               </StyledButton>
               <StyledButton type="submit">Save</StyledButton>

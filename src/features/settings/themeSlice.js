@@ -9,10 +9,11 @@ export const themeSlice = createSlice({
     texture: "horizontalTexture",
     blackBars: true,
     custom: "",
+    jitterDefault: true,
   },
   reducers: {
     changeBg: (state, action) => {
-      console.log(action.payload);
+
       state.bgColor = action.payload;
     },
     changeTemplateStyle: (state, action) => {
@@ -29,10 +30,13 @@ export const themeSlice = createSlice({
     },
     setCustom: (state, action) => {
       state.custom = action.payload;
+    },
+    setJitter: (state, action) => {
+      state.jitterDefault = action.payload;
     }
   },
 });
 
-export const { changeBg, changeTemplateStyle, invert, changeTexture, toggleblackBars, setCustom } = themeSlice.actions;
+export const { changeBg, changeTemplateStyle, invert, changeTexture, toggleblackBars, setCustom,setJitter } = themeSlice.actions;
 
 export default themeSlice.reducer;

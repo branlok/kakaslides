@@ -1,12 +1,13 @@
-import React from 'react'
-import { StyledLoading } from './styles'
-
+import React from "react";
+import { StyledLoading } from "./styles";
+import { ReactComponent as Loader } from "../../globalStyles/donutLoading.svg";
 function LoadingScreen() {
-    return (
-        <StyledLoading>
-            Creating Image
-        </StyledLoading>
-    )
+  return (
+    <StyledLoading>
+      <Loader className="svg" />
+      <p> Creating Slide </p>
+    </StyledLoading>
+  );
 }
 
-export default LoadingScreen
+export default LoadingScreen;

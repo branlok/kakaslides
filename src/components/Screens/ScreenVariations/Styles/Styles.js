@@ -1,28 +1,12 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+// import { jitterTextText } from "../../../../globalStyles/jitterTextKeyframe";
+import { jitterText } from "../../../../globalStyles/jitterKeyframe";
 
-let jitter = keyframes`
-0% {
-    transform: translateY(0px) translateX(0px)
-}
-25% {
-    transform: translateY(1px) translateX(1px)
-}
-50% {
-    transform: translateY(1px) translateX(0px)
-}
-75% {
-    transform: translateY(0px) translateX(-1px)
-}
-100% {
-    transform: translateY(0px) translateX(0px)
-}
-`;
 
 let StyledIdentityTemplate = styled.div`
   //takes the current theme
   width: 100%;
   height: 100%;
-
   color: white;
   display: flex;
   justify-content: center;
@@ -35,9 +19,9 @@ let StyledIdentityTemplate = styled.div`
     margin: 0px;
     padding: 0px;
     :hover {
-      animation: ${jitter} 0.2s ease infinite;
+      animation: ${jitterText} 0.2s ease infinite;
     }
-    /* animation: ${jitter} 0.2s ease infinite; */
+    /* animation: ${jitterText} 0.2s ease infinite; */
   }
   input {
     background: transparent;
@@ -68,6 +52,7 @@ let StyledIdentityTemplate = styled.div`
   }
 `;
 
+
 export let StyledMessageTemplate = styled.div`
   //takes the current theme
   width: 100%;
@@ -85,9 +70,9 @@ export let StyledMessageTemplate = styled.div`
     margin: 0px;
     padding: 0px;
     :hover {
-      animation: ${jitter} 0.2s ease infinite;
+      animation: ${jitterText} 0.2s ease infinite;
     }
-    /* animation: ${jitter} 0.2s ease infinite; */
+    /* animation: ${jitterText} 0.2s ease infinite; */
   }
   .mainText,
   .mainTextInput {
@@ -171,9 +156,9 @@ export let StyledParagraphTemplate = styled.div`
       text-shadow: 2px 2px black !important;
     }
     :hover {
-      animation: ${jitter} 0.2s ease infinite;
+      animation: ${jitterText} 0.2s ease infinite;
     }
-    /* animation: ${jitter} 0.2s ease infinite; */
+    /* animation: ${jitterText} 0.2s ease infinite; */
   }
   /* .mainText {
     font-size: 100px;

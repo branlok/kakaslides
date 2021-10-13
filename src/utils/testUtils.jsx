@@ -8,7 +8,9 @@ import themeReducer from "../features/settings/themeSlice";
 import settingsReducer from "../features/settings/settings";
 import inputReducer from "../features/userInputs/inputSlice";
 import { ThemeProvider } from "styled-components";
-import theme from "../globalStyles/theme";
+
+import getBackgroundColor from "./getBackgroundColor";
+import { useSelector } from "react-redux";
 
 function render(
   ui,
@@ -25,10 +27,18 @@ function render(
     ...renderOptions
   } = {}
 ) {
+  function ThemeWrapper({ children }) {
+    let color = useSelector((state) => state.theme.bgColor);
+    let bgHexCode = getBackgroundColor(color);
+    return <ThemeProvider theme={bgHexCode}>{children}</ThemeProvider>;
+  }
+
   function Wrapper({ children }) {
     return (
       <Provider store={store}>
-        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        <ThemeWrapper>
+          {children}
+        </ThemeWrapper>
       </Provider>
     );
   }

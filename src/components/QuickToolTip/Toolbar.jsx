@@ -12,7 +12,7 @@ import theme from "../../globalStyles/theme";
 import BackgroundForm from "./backgroundForm/BackgroundForm";
 function Toolbar({ generateImage }) {
   let dispatch = useDispatch();
-  let blackBars = useSelector((state) => state.theme.blackBars);
+  let theme = useSelector((state) => state.theme);
   // let downloadRef = useRef(null);
   let [takingScreenshot, setTakingScreenshot] = useState(false);
   let [toolbarOpened, setToolbarOpened] = useState(false);
@@ -35,7 +35,7 @@ function Toolbar({ generateImage }) {
     return (
       <StyledTooltip
         onClick={check}
-        blackBars={blackBars}
+        blackBars={theme.blackBars}
         data-testid="toolbarWrapper"
       >
         {toolbarOpened ? (
@@ -64,7 +64,7 @@ function Toolbar({ generateImage }) {
               >
                 Download
               </button>
-              <button onClick={() => dispatch(toggleSettings())}>
+              <button onClick={() => dispatch(toggleSettings(true))}>
                 Settings
               </button>
               <button

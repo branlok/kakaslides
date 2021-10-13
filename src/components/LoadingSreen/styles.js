@@ -9,18 +9,33 @@ to {
 }
 `;
 
+let spin = keyframes`
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+`;
+
 export let StyledLoading = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0px;
   left: 0px;
   height: 100%;
   width: 100%;
-  z-index: 10;
-
+  z-index: 5;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0,0,0,0.95);
+  flex-direction: column;
+  /* background: rgba(0, 0, 0, 0); */
   animation: ${fadeIn} 0.2s ease forwards;
+  .svg {
+    height: 50px;
+    width: 50px;
+    animation: ${spin} 1s linear infinite;
+    fill: white;
+  }
 `;
