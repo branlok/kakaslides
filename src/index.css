@@ -12,10 +12,6 @@ body,
   width: 100vw;
   height: 100vh;
 }
-body {
-  position: fixed;
-  height: 100%;
-}
 
 @font-face {
   font-family: "Charm";

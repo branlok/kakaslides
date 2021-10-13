@@ -153,6 +153,7 @@ let StyledSettingsModal = styled.div`
     width: calc(100% - 40px);
     margin: 10px;
     background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
     /* animation: ${fadeIn} 0.3s ease forwards; */
     transition: 0.2s;
     display: flex;
