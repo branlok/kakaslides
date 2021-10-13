@@ -41,8 +41,7 @@ let StyledScreenWrapper = styled.div`
   position: absolute;
   top: 0px;
   left: 0px;
-  width: 100%;
-  height: 100%;
+
   pointer-events: none;
   @media only screen and (max-height: 700px) and (max-width: 1080px) {
     background-size: 300% auto;
@@ -155,8 +154,9 @@ export let StyledContainer = styled.div`
   }
 
   .blackbars {
-    height: 130px;
+    height: 100px;
     width: 100%;
+    flex-shrink: 0;
     background: black;
     display: ${(props) => (props.blackBars ? "block" : "none")};
     animation: ${expand} 3s ease-in-out forwards;

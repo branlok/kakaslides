@@ -110,7 +110,7 @@ export let StyledParagraphTemplate = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  
   form {
     width: calc(100% - 100px);
     height: 20vw;

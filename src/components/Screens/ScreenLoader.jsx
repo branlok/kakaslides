@@ -46,7 +46,6 @@ function ScreenLoader({ generateImage, status }) {
 
   return (
     <StyledContainer blackBars={theme.blackBars} jitter={theme.jitterDefault}>
-      <div className="blackbars" data-testid="blackbars"></div>
       <StyledScreenWrapper
         ref={elem}
         texture={theme.texture}
@@ -59,6 +58,7 @@ function ScreenLoader({ generateImage, status }) {
         data-testid="screenbg"
       />
       <Toolbar status={status} generateImage={generateImage} />
+      <div className="blackbars" data-testid="blackbars"></div>
       {screen}
       <div className="blackbars" data-testid="blackbars"></div>
     </StyledContainer>
