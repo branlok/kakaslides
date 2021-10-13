@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 body,
@@ -32,11 +33,15 @@ html {
   }
   form {
     color: white !important;
+    
   }
 
   [type="radio"]:checked + span {
+    border-bottom: 1px solid white !important;
     transition: 0.1s;
   }
+  span:hover {
+    border-bottom: 1px solid white !important;}
 }
 
 @font-face {

@@ -103,7 +103,10 @@ let StyledSettingsModal = styled.div`
       border-bottom: 1px solid transparent;
     }
     span:hover {
-      border-bottom: 1px solid white;
+      border-bottom: ${(props) =>
+      props.theme.primary.bg === "#F9F4F8"
+        ? "1px solid black;"
+        : "1px solid white;"};
     }
   }
 
