@@ -67,7 +67,10 @@ let StyledSettingsModal = styled.div`
   }
 
   [type="radio"]:checked + span {
-    border-bottom: ${props => props.theme.primary.bg === "#F9F4F8" ? "1px solid black;" : "1px solid white;" };
+    border-bottom: ${(props) =>
+      props.theme.primary.bg === "#F9F4F8"
+        ? "1px solid black;"
+        : "1px solid white;"};
     transition: 0.1s;
   }
   .otherSection {
@@ -129,10 +132,9 @@ let StyledSettingsModal = styled.div`
     font-size: 25px;
   }
   .themeSect {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid gray;
     text-align: start;
     letter-spacing: 7px;
-
     font-size: 20px;
   }
 
@@ -167,25 +169,27 @@ let StyledSettingsModal = styled.div`
     @media only screen and (max-width: 700px), (max-height: 700px) {
       width: 100%;
       height: 100%;
+      overflow-y: scroll;
+      scrollbar-color: gray rgba(0, 0, 0, 0);
+      ::-webkit-scrollbar {
+        background-color: rgba(0, 0, 0, 0);
+        width: 12px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.33333);
+        border-radius: 1.25em /* 20px / 16px */;
+        width: 215px;
+      }
     }
-      color: ${props => props.theme.primary.bg === "#F9F4F8" ? "black" : "white" };
+    color: ${(props) =>
+      props.theme.primary.bg === "#F9F4F8" ? "black" : "white"};
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.19), 0 0px 6px rgba(0, 0, 0, 0.13);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.1);
-    overflow-y: scroll;
-    scrollbar-color: gray rgba(0, 0, 0, 0);
-    ::-webkit-scrollbar {
-      background-color: rgba(0, 0, 0, 0);
-      width: 12px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background-color: rgba(255, 255, 255, 0.33333);
-      border-radius: 1.25em /* 20px / 16px */;
-      width: 215px;
-    }
   }
   h1 {
-    padding-left: 5px;
+    width: calc(100% - 5px);
+    margin-left: 5px;
   }
   h2 {
     padding-left: 5px; //fixing the centering
@@ -198,10 +202,10 @@ let StyledSettingsModal = styled.div`
   .action {
     padding: 25px;
     button {
-      /* color: ${props => props.theme.primary.bg === "#F9F4F8" ? "white" : "#e0e0e0" }; */
-      background-color: rgba(0,0,0,0.2);
+      /* color: ${(props) =>
+        props.theme.primary.bg === "#F9F4F8" ? "white" : "#e0e0e0"}; */
+      background-color: rgba(0, 0, 0, 0.2);
     }
-
   }
 `;
 
@@ -210,7 +214,7 @@ export let StyledPalette = styled.div`
   height: 100%;
   margin: 0px 4px;
   border-radius: 3px;
- background-color: ${(props) => props.theme.alternate[props.color].bg};
+  background-color: ${(props) => props.theme.alternate[props.color].bg};
   outline: 2px solid transparent;
   cursor: pointer;
   box-shadow: 0 0px 10px rgba(0, 0, 0, 0.19), 0 0px 6px rgba(0, 0, 0, 0.13);

@@ -13,6 +13,14 @@ body,
   height: 100vh;
 }
 
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+html {
+  height: -webkit-fill-available;
+}
+
 @font-face {
   font-family: "Charm";
   src: local("Charm"), url(./fonts/Charm-Regular.ttf) format("truetype");
