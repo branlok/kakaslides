@@ -22,9 +22,13 @@ body,
   .blurred-container {
     background-color: rgba(0, 0, 0, 1);
   }
-  /* form {
-      background-color:rgba(255,255,255,0.05) !important;
-  } */
+  form {
+    color: white !important;
+  }
+
+  [type="radio"]:checked + span {
+    transition: 0.1s;
+  }
 }
 
 @font-face {

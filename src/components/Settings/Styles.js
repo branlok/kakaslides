@@ -49,6 +49,7 @@ let StyledSettingsModal = styled.div`
   overflow: hidden;
   animation: ${fadeIn} 0.5s ease-in-out forwards;
   z-index: 5;
+
   label {
     cursor: pointer;
   }
@@ -66,7 +67,7 @@ let StyledSettingsModal = styled.div`
   }
 
   [type="radio"]:checked + span {
-    border-bottom: 1px solid white;
+    border-bottom: ${props => props.theme.primary.bg === "#F9F4F8" ? "1px solid black;" : "1px solid white;" };
     transition: 0.1s;
   }
   .otherSection {
@@ -166,7 +167,7 @@ let StyledSettingsModal = styled.div`
       width: 100%;
       height: 100%;
     }
-    color: white;
+      color: ${props => props.theme.primary.bg === "#F9F4F8" ? "black" : "white" };
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.19), 0 0px 6px rgba(0, 0, 0, 0.13);
     border-radius: 5px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -191,10 +192,15 @@ let StyledSettingsModal = styled.div`
     justify-content: center;
     display: flex;
     align-items: center;
-    color: rgba(255, 255, 255, 0.8);
+    /* color: rgba(255, 255, 255, 0.8); */
   }
   .action {
     padding: 25px;
+    button {
+      /* color: ${props => props.theme.primary.bg === "#F9F4F8" ? "white" : "#e0e0e0" }; */
+      background-color: rgba(0,0,0,0.2);
+    }
+
   }
 `;
 
