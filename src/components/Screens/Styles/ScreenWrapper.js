@@ -88,7 +88,7 @@ export let StyledContainer = styled.div`
   h1,
   h2,
   h3,
-  .jitterFooter {
+  .jitterClass {
     color: ${(props) =>
       props.blackFont && props.bgColor === "offWhite"
         ? "black !important"
@@ -105,7 +105,7 @@ export let StyledContainer = styled.div`
         : "none"};
   }
 
-  //stand alone footer element on .messageScrene.jsx , 
+  //stand alone footer element on .messageScrene.jsx ,
   .inputFooter {
     color: ${(props) =>
       props.blackFont && props.bgColor === "offWhite"
@@ -128,15 +128,32 @@ export let StyledContainer = styled.div`
         props.blackFont && props.bgColor === "offWhite"
           ? "black !important"
           : "white"};
+      text-shadow: ${(props) =>
+        props.blackFont && props.bgColor === "offWhite"
+          ? "none"
+          : " 0px 0px 3px white;"};
       font-weight: bold;
       padding: 0px;
       width: calc(100% - 100px);
+    }
+
+    textarea {
+      color: ${(props) =>
+        props.blackFont && props.bgColor === "offWhite"
+          ? "black !important"
+          : "white"};
     }
     input:focus {
       outline: none;
       background-color: rgba(0, 0, 0, 0.2);
 
       transition: 0.2s;
+    }
+    button {
+      color: ${(props) =>
+        props.blackFont && props.bgColor === "offWhite"
+          ? "black !important"
+          : "white"};
     }
     .saveEdit {
       position: absolute;

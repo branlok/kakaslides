@@ -59,7 +59,7 @@ function MessageScreen() {
             {" "}
             {userText.numberText || defaultValues.numberText}
           </h3>
-          <footer className="jitterFooter">動書番戦 無シ</footer>
+          <footer className="jitterClass">動書番戦 無シ</footer>
           <div ref={refContainer} className="showEdit"></div>
         </>
       ) : (

@@ -12,11 +12,12 @@ function ParagraphScreen() {
   const [editMode, setEditMode] = useState(false);
   let dispatch = useDispatch();
   let input = useSelector((state) => state.inputs);
+  let theme = useSelector(state => state.theme)
   return (
-    <StyledParagraphTemplate data-testid="paragraphScreen">
+    <StyledParagraphTemplate data-testid="paragraphScreen" bgColor={theme.bgColor} blackFont={theme.blackFont}>
       {!editMode ? (
         <div onClick={() => setEditMode(true)}>
-          <p>{input.longText}</p>
+          <p className="jitterClass">{input.longText}</p>
         </div>
       ) : (
         <Formik

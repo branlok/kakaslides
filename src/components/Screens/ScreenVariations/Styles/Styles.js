@@ -7,7 +7,7 @@ let StyledIdentityTemplate = styled.div`
   //takes the current theme
   width: 100%;
   height: 100%;
-  color: black;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +156,10 @@ export let StyledParagraphTemplate = styled.div`
     letter-spacing: 15px;
     p {
       line-height: 50px;
-      text-shadow: 2px 2px black !important;
+      text-shadow: ${(props) =>
+      props.blackFont && props.bgColor === "offWhite"
+        ? "2px 2px white !important;"
+        : " 2px 2px black !important;"};
     }
     :hover {
       animation: ${jitterText} 0.2s ease infinite;
