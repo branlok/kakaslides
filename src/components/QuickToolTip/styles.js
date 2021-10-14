@@ -98,6 +98,7 @@ export let StyledTooltip = styled.div`
         border-radius: 5px;
         text-align: left;
         background-color: rgba(0, 0, 0, 0.4);
+        text-shadow: none;
         :focus {
           background-color: rgba(0, 0, 0, 0.6);
         }

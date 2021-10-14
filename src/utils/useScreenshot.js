@@ -32,6 +32,7 @@ function useScreenshot() {
         height: captureRef.current.scrollHeight,
         canvasWidth: captureRef.current.scrollWidth * 2,
         canvasHeight: captureRef.current.scrollHeight * 2,
+        style: {backgroundColor: "transparent"},
       });
 
       setStatus("success");
