@@ -203,7 +203,7 @@ let StyledSettingsModal = styled.div`
     /* color: rgba(255, 255, 255, 0.8); */
   }
   .action {
-    padding: 25px;
+    padding: 15px;
     button {
       /* color: ${(props) =>
         props.theme.primary.bg === "#F9F4F8" ? "white" : "#e0e0e0"}; */

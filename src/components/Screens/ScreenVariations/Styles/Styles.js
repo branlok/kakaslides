@@ -7,7 +7,7 @@ let StyledIdentityTemplate = styled.div`
   //takes the current theme
   width: 100%;
   height: 100%;
-  color: white;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +16,7 @@ let StyledIdentityTemplate = styled.div`
   h1,
   h2,
   h3 {
+
     margin: 0px;
     padding: 0px;
     :hover {
@@ -110,7 +111,7 @@ export let StyledParagraphTemplate = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   form {
     width: calc(100% - 100px);
     height: 20vw;

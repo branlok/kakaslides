@@ -7,7 +7,7 @@ import IdentityLayout from "./EditMode/IdentityLayout";
 import { StyledMessageTemplate } from "./Styles/Styles";
 
 function MessageScreen() {
-    let refContainer = useRef(null);
+  let refContainer = useRef(null);
 
   const [editMode, setEditMode] = useState(false);
   let theme = useSelector((state) => state.theme);
@@ -15,7 +15,6 @@ function MessageScreen() {
   const defaultValues = getDefaultText(theme.bgColor, "message");
 
   let handleHoverToolTip = (e) => {
-
     if (e.type == "mouseenter") {
       refContainer.current.style.transform = "scale(1)";
       refContainer.current.style.transition = "0.3s";
@@ -37,7 +36,10 @@ function MessageScreen() {
   };
 
   return (
-    <StyledMessageTemplate data-testid="messageScreen" jitter={theme.jitterDefault}>
+    <StyledMessageTemplate
+      data-testid="messageScreen"
+      jitter={theme.jitterDefault}
+    >
       {!editMode ? (
         <>
           <h1
@@ -57,15 +59,13 @@ function MessageScreen() {
             {" "}
             {userText.numberText || defaultValues.numberText}
           </h3>
-          <footer>動書番戦 無シ</footer>
-          <div ref={refContainer} className="showEdit">
-
-          </div>
+          <footer className="jitterFooter">動書番戦 無シ</footer>
+          <div ref={refContainer} className="showEdit"></div>
         </>
       ) : (
         <>
-        <IdentityLayout toggler={setEditMode} styleType="message" />
-        <footer>動書番戦 無シ</footer>
+          <IdentityLayout toggler={setEditMode} styleType="message" />
+          <footer className="inputFooter">動書番戦 無シ</footer>
         </>
       )}
     </StyledMessageTemplate>

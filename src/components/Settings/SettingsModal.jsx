@@ -11,6 +11,7 @@ import {
   changeTemplateStyle,
   changeTexture,
   invert,
+  setBlackFont,
   setJitter,
   toggleblackBars,
 } from "../../features/settings/themeSlice";
@@ -34,7 +35,8 @@ function SettingsModal() {
     texture: theme.texture,
     blackBars: theme.blackBars,
     inverted: false,
-    jitterDefault: theme.jitterDefault
+    jitterDefault: theme.jitterDefault,
+    blackFont: theme.blackFont
   };
 
   useEffect(() => {
@@ -83,6 +85,7 @@ function SettingsModal() {
             dispatch(changeTexture(value.texture));
             dispatch(toggleblackBars(value.blackBars));
             dispatch(setJitter(value.jitterDefault));
+            dispatch(setBlackFont(value.blackFont));
             // dispatch(invert(value.blackBars));
             dispatch(toggleSettings(false));
 
@@ -127,7 +130,10 @@ function SettingsModal() {
                 Always Shake Text
                 <Toggle toggleOption={"jitterDefault"} />
               </div>
-
+              <div className="toggleWrapper">
+                Black Text on White Backdrop
+                <Toggle toggleOption={"blackFont"} />
+              </div>
             </section>
             <h2 className="themeSect">Colors</h2>
             <section className="themeSection">

@@ -85,11 +85,32 @@ export let StyledContainer = styled.div`
   align-items: center;
   flex-direction: column;
   overflow: hidden;
-
   h1,
   h2,
-  h3 {
-    animation: ${props => props.jitter ?  css`${jitterText} 0.2s ease infinite;` : "none"};
+  h3,
+  .jitterFooter {
+    color: ${(props) =>
+      props.blackFont && props.bgColor === "offWhite"
+        ? "black !important"
+        : "white"};
+    text-shadow: ${(props) =>
+      props.blackFont && props.bgColor === "offWhite"
+        ? "none"
+        : " 0px 0px 3px white;"};
+    animation: ${(props) =>
+      props.jitter
+        ? css`
+            ${jitterText} 0.2s ease infinite;
+          `
+        : "none"};
+  }
+
+  //stand alone footer element on .messageScrene.jsx , 
+  .inputFooter {
+    color: ${(props) =>
+      props.blackFont && props.bgColor === "offWhite"
+        ? "black !important"
+        : "white"};
   }
   //styles when edit is toggled.
   form {
@@ -103,7 +124,10 @@ export let StyledContainer = styled.div`
       background: transparent;
       border-style: none;
       text-align: center;
-      color: white;
+      color: ${(props) =>
+        props.blackFont && props.bgColor === "offWhite"
+          ? "black !important"
+          : "white"};
       font-weight: bold;
       padding: 0px;
       width: calc(100% - 100px);
@@ -117,7 +141,6 @@ export let StyledContainer = styled.div`
     .saveEdit {
       position: absolute;
       bottom: -20px;
-
       border-style: none;
       background-color: transparent;
       font-weight: bold;

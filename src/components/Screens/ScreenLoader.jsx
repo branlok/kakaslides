@@ -45,7 +45,7 @@ function ScreenLoader({ generateImage, status }) {
   });
 
   return (
-    <StyledContainer blackBars={theme.blackBars} jitter={theme.jitterDefault}>
+    <StyledContainer blackBars={theme.blackBars} jitter={theme.jitterDefault} bgColor={theme.bgColor} blackFont={theme.blackFont}>
       <StyledScreenWrapper
         ref={elem}
         texture={theme.texture}
