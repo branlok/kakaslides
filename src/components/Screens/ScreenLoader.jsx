@@ -51,9 +51,7 @@ function ScreenLoader({ generateImage, status }) {
         texture={theme.texture}
         bgColor={theme.bgColor}
         customUrl={
-          status == "loading"
-            ? "https://cors-anywhere-tlis.herokuapp.com/" + theme.custom
-            : theme.custom
+          theme.custom
         }
         data-testid="screenbg"
       />
