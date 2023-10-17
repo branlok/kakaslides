@@ -10,7 +10,7 @@ Hello [Monogatari](https://en.wikipedia.org/wiki/Monogatari_(series)) fans! I bu
 
 - Kakaslides is a web application built with React. 
 - Image downloads of slides is powered with [html-to-image](https://github.com/bubkoo/html-to-image)
-- As a way to bypass CORS for custom external image url. A remote proxy server was set up and it delegates resources from destination image hosts to this client.
+- ~~As a way to bypass CORS for custom external image url. A remote proxy server was set up and it delegates resources from destination image hosts to this client.~~ Reverse Proxy currently removed, until further notice.
 
 # Known Issues
 
