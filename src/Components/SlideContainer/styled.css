@@ -1,0 +1,28 @@
+.slide-container {
+    --bar-height: 50px;
+    --bar-bgColor: "black";
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    border-color: var(--bar-bgColor, "black");
+    border-top: var(--bar-height) solid black;
+    border-bottom: var(--bar-height) solid black;
+    overflow: hidden;
+    .footer-title-wrapper {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: var(--bar-height);
+        border: 1px solid red;
+    }
+}
+
+.default-structure,
+.title-subtitle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+}

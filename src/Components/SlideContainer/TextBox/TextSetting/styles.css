@@ -1,0 +1,61 @@
+.tooltip {
+    position: absolute;
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    background-color: black;
+    border-radius: 2px;
+    top: -65px;
+    right: calc(50% - 170px);
+    margin: 20px;
+    z-index: 2;
+    border-bottom: 2px solid #e89c26;
+}
+.text-setting-wrapper {
+    position: relative;
+    padding: 0px;
+    border: 2px dashed transparent;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+    /* height: 10rem; */
+    &:hover {
+        transition: 0.2s;
+        border: 2px dashed rgba(255, 255, 255, 0.4);
+    }
+}
+.focused {
+    transition: 0.2s;
+    border: 2px dashed rgba(255, 255, 255, 0.4);
+}
+
+.cta-tooltip {
+    position: fixed;
+    background-color: black;
+    padding: 2px 10px;
+    opacity: 0;
+}
+
+form {
+    padding: 0px;
+    margin: 0px;
+    height: 10rem;
+    display: flex;
+    padding: 1px;
+}
+
+input {
+    --font-family: "helvetica";
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    font-family: var(--font-family);
+    font-weight: bold;
+    border-style: none;
+    background-color: transparent;
+    outline: none;
+}
+
+input.title {
+    height: 10rem;
+}
