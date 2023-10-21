@@ -1,5 +1,15 @@
+@keyframes borderAnimation {
+    from {
+        border-top: 0px solid black;
+        border-bottom: 0px solid black;
+    }
+    to {
+        border-top: var(--bar-height) solid black;
+        border-bottom: var(--bar-height) solid black;
+    }
+}
 .slide-container {
-    --bar-height: 50px;
+    --bar-height: 100px;
     --bar-bgColor: "black";
     transition: 0.5s;
     width: 100%;
@@ -8,6 +18,8 @@
     border-top: var(--bar-height) solid black;
     border-bottom: var(--bar-height) solid black;
     overflow: hidden;
+    animation: borderAnimation 3s ease forwards;
+    /* border:1px solid pink; */
     .footer-title-wrapper {
         position: absolute;
         width: 100%;

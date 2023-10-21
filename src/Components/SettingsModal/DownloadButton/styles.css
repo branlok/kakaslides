@@ -1,0 +1,28 @@
+/* .submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: none;
+    color: white;
+    height: 100%;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #1c1c1c;
+    padding: 0px 20px;
+    width: 100%;
+    flex-direction: column;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    &:hover {
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0);
+    }
+    span {
+        font-weight: bold;
+    }
+    .button-name {
+    }
+    .file-name {
+        font-size: 0.625rem;
+        color: gray;
+    }
+} */

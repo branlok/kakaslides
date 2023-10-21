@@ -2,6 +2,7 @@ import React from 'react'
 import "./styles.css"
 import WebFont from 'webfontloader';
 import { Github } from "@uiw/react-color"
+import useBlackbarSettings from '../../../store/slices/slideModifications';
 type Props = {
     defaultText?: string
     defaultSize?: "xxs" | "xs" | "sm" | "md" | "lg"
@@ -13,6 +14,9 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs" }: Props) {
     let [fontColor, setFontColor] = React.useState("White");
     let [editMode, setEditMode] = React.useState(false);
     let [hovering, setHovering] = React.useState(false);
+
+    // if touched, then we no longer use default text;
+    let [contaminated, setcontaminated] = React.useState(false);
     let [size, setSize] = React.useState<"xs" | "sm" | "md" | "lg">(defaultSize)
     let ref = React.useRef(null);
 
@@ -42,6 +46,7 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs" }: Props) {
     const saveNewTextAndTurnOffEditMode = (val) => {
         setText(val);
         setEditMode(false);
+        setcontaminated(true);
     }
 
 
@@ -50,7 +55,7 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs" }: Props) {
             {hovering && !editMode && <CTA />}
             {editMode && <Tooltip fontColor={fontColor} setFontColor={setFontColor} turnOffEditMode={turnOffEditMode} parentContainer={ref} defaultFont={fontFamily} setCurrentFont={setFontFamily} />}
             {/* Toggle between EditMode and Presentation Mode */}
-            {editMode ? <EditForm text={text} size={size} saveNewText={saveNewTextAndTurnOffEditMode} /> : <PresentableText size={size} text={text} />}
+            {editMode ? <EditForm text={text} size={size} saveNewText={saveNewTextAndTurnOffEditMode} /> : <PresentableText size={size} text={!contaminated ? defaultText : text} />}
         </div>
     )
 }
@@ -81,9 +86,10 @@ function Tooltip({ fontColor, setFontColor, turnOffEditMode, parentContainer, de
     let [selectFont, setSelectFont] = React.useState(defaultFont);
     let currentState = useGoogleFonts(parentContainer, selectFont);
     let [revealColorPicker, setRevealColorPicker] = React.useState(false);
-    const fontList = ['Arial', 'Roboto', 'Open Sans', 'Noto Sans JP', 'Montserrat', 'Lato', 'Poppins', 'Roboto Condensed', 'Inter', 'Roboto Mono', 'Oswald', 'Raleway', 'Noto Sans', 'Nunito Sans', 'Roboto Slab', 'Ubuntu', 'Nunito', 'Playfair Display', 'Rubik', 'Merriweather', 'PT Sans', 'Noto Sans Korean']
+    const fontList = ['Arial', 'Sometype Mono', 'Playfair Display', 'Josefin Sans', 'Pixelify Sans', 'Charm', 'Noto Sans Japanese', 'Noto Sans Korean', 'Zen Old Mincho'];
     let ref = React.useRef<HTMLElement>(null);
     const switchFont = (e) => {
+        e.preventDefault();
         setSelectFont(e.currentTarget.value);
         setCurrentFont(e.currentTarget.value);
     }
@@ -134,7 +140,15 @@ function EditForm({ text, size, saveNewText }) {
     )
 }
 function PresentableText({ text, size }) {
-    return <div className={`presentable-text ${size}`}>{text}</div>
+
+    let textMotion = useBlackbarSettings(state => state.textMotion);
+    let mapping = {
+        ["Fast"]: "fast-animation",
+        ["Slow"]: "slow-animation",
+        ["None"]: "no-animation"
+    }
+
+    return <div className={`presentable-text ${size} ${mapping[textMotion]}`}>{text}</div>
 }
 
 function useGoogleFonts(ref, fontStyle) {
@@ -146,20 +160,43 @@ function useGoogleFonts(ref, fontStyle) {
         console.log(fetchedSuccessfully, fontStyle, ref.current)
         if (fontStyle === "Arial") ref.current.style.setProperty("--font-family", fontStyle);
         if (ref.current && !fetchedSuccessfully.includes(fontStyle)) {
-            WebFont.load({
-                google: {
-                    families: [fontStyle]
-                },
-                loading: function () {
-                    setCurrentState("loading")
-                },
-                active: function () {
-                    setFetchedSuccessfully(prev => [...prev, fontStyle])
-                    setCurrentState("success")
-                },
-                inactive: function () {
-                },
-            });
+
+            // WebFont.load({
+            //     google: {
+            //         families: [`${fontStyle}:400`]
+            //     },
+            //     loading: function () {
+            //         setCurrentState("loading")
+            //     },
+            //     active: function () {
+            //         setFetchedSuccessfully(prev => [...prev, fontStyle])
+            //         setCurrentState("success")
+            //         function appendFont(font: string, url: string) {
+            //             const fontCss = document.createElement("style");
+            //             const fontCssRule = `
+            //                           @font-face {
+            //                           font-family: "${font}";
+            //                           src: url("${url}"),
+            //                         }`;
+
+            //             fontCss.appendChild(document.createTextNode(fontCssRule));
+            //             document.head.appendChild(fontCss);
+            //         }
+            //         // appendFont(fontStyle, )
+            //     },
+            //     inactive: function () {
+            //     },
+            //     fontactive: function (familyName, fvd) {
+            //         const styleSheets = Array.from(document.styleSheets);
+
+            //         console.log(styleSheets);
+
+
+            //         console.log(Array.from(document.fonts));
+            //     }
+            // });
+            // var sheet = window.document.styleSheets[0];
+            // sheet.insertRule(`@font-face {font-family: '${fontStyle}'};`)
             ref.current.style.setProperty("--font-family", fontStyle);
         }
     }, [fontStyle, ref.current])

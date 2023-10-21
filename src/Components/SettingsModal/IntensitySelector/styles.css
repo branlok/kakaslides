@@ -1,0 +1,61 @@
+.intensity-blend {
+    height: 100%;
+    width: 100%;
+    padding: 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 2px;
+    margin-bottom: 2px;
+    > label {
+        font-size: 0.725rem;
+        font-weight: bold;
+    }
+    input[type="range"] {
+        --rotate: "rotate(10deg)";
+        appearance: none;
+        background-color: rgb(181, 132, 29);
+        box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+        height: 50%;
+        width: 100%;
+        font-weight: bold;
+        margin: 0px;
+        padding: 2px;
+        border-radius: 5px;
+        border: 3px solid orange;
+        border-radius: 50px;
+        /* transition: 0.4s; */
+        &::-moz-range-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            background-color: transparent;
+            background-size: cover;
+            transform-origin: center;
+            transform: scale(1.7) var(--rotate);
+            transition: 0.15s;
+            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            cursor: pointer;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            background-color: transparent;
+            transform-origin: center;
+            background-size: cover;
+            transition: 0.05s;
+            transform: scale(1.7) var(--rotate);
+            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            cursor: pointer;
+        }
+    }
+}

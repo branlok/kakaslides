@@ -1,0 +1,35 @@
+.file-input {
+    display: none;
+    position: relative;
+}
+.download-btn {
+    position: relative;
+    &[data-status="carry-image"] {
+        &::after {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 10px;
+            background-color: rgb(0, 241, 0);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+    }
+    &[data-status="carry-none"] {
+        &::after {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 10px;
+            background-color: rgb(133, 133, 133);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+    }
+}
