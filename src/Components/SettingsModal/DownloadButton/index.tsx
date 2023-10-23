@@ -13,7 +13,7 @@ function UploadImageButton() {
         <button className="submit-button" disabled={state === "loading"} onClick={(e) => {
             let nodez = document.querySelector('.slide-container');
             setState('loading');
-            htmlToImage.toPng(nodez).then(function (dataUrl) {
+            htmlToImage.toJpeg(nodez).then(function (dataUrl) {
                 download(dataUrl, 'my-node.png');
                 setState('idle');
             })

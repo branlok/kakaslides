@@ -4,7 +4,7 @@ export default {
     plugins: [
         postcssPresetEnv({
             /* pluginOptions */
-            stage: 3,
+            stage: 2,
             features: {
                 "nesting-rules": true,
             },
