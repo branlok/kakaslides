@@ -1,6 +1,5 @@
 import React from "react";
 import "./styles.css"
-import useMediaStore from "../../store/slices/mediaStore";
 import ColorSelector from "./ColorSelectors";
 import MixBlendModeSelector from "./MixBlendModeSelector";
 import UploadImageButton from "./UploadImageButton";
