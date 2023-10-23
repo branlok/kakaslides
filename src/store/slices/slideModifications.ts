@@ -20,7 +20,6 @@ type SlideAppearance = {
     blendMode: BlendModes;
     intensity: Number;
     colorFilter: ColorFilter | string;
-    layoutType: "identity" | "regular" | "excerpt";
     // localImage: string | null;
     // setLocalImage: (str) => void;
     setIntensity: (num: number) => void;
