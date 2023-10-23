@@ -157,8 +157,8 @@ function PresentableText({ text, size }) {
 function useGoogleFonts(ref, fontStyle) {
 
     // this can be put into globalstate somewhere.
-    let [fetchedSuccessfully, setFetchedSuccessfully] = React.useState<string[]>(['Arial']);
-    let [currentState, setCurrentState] = React.useState("success");
+    const [fetchedSuccessfully, setFetchedSuccessfully] = React.useState<string[]>(['Arial']);
+    const [currentState, setCurrentState] = React.useState("success");
     React.useEffect(() => {
         console.log(fetchedSuccessfully, fontStyle, ref.current)
         if (fontStyle === "Arial") ref.current.style.setProperty("--font-family", fontStyle);
