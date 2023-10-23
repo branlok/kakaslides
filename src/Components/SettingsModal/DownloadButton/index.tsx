@@ -2,12 +2,9 @@ import React from 'react'
 import './styles.css';
 import * as htmlToImage from "html-to-image";
 import download from "downloadjs";
-import useMediaStore from '../../../store/slices/mediaStore';
-type Props = {}
 
-function UploadImageButton({ }: Props) {
-    let mediaURL = useMediaStore(state => state.mediaURL);
-    let [state, setState] = React.useState('idle')
+function UploadImageButton() {
+    const [state, setState] = React.useState('idle')
     const present = {
         idle: "Download",
         loading: "Building",

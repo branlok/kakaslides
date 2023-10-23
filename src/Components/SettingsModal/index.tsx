@@ -1,5 +1,4 @@
 import React from "react";
-import kakaGlobalState from "../../store/slices/slideModifications";
 import "./styles.css"
 import useMediaStore from "../../store/slices/mediaStore";
 import ColorSelector from "./ColorSelectors";
@@ -10,18 +9,9 @@ import IntensitySelector from "./IntensitySelector";
 import BackgroundMotionSetting from "./BackgroundMotionSetting";
 import TextMotionSetting from "./TextMotionSetting";
 import cross from "../../assets/cross.svg";
-import ShowWindowSize from "./ShowWindowSize/ShowWindowSize";
-type Props = {}
 
-function SettingsModal({ }: Props) {
 
-    const toggleBlackBar = kakaGlobalState(state => state.toggleBlackBar);
-    const adjustHeight = kakaGlobalState(state => state.adjustHeight);
-    const setBlendMode = kakaGlobalState(state => state.setBlendMode);
-    const intensity = kakaGlobalState(state => state.intensity);
-    const setIntensity = kakaGlobalState(state => state.setIntensity);
-    let MIXBLENDS = ["normal", "multiply", "hardlight", "difference", "color-burn", "screen", "overlay"];
-    let PRESETCOLOURS = ["red", "orange", "blue"];
+function SettingsModal() {
     const [mouseOver, onMouseOver] = React.useState(false);
     const [hide, setHide] = React.useState(true);
     function toggleFullScreen() {
@@ -37,7 +27,6 @@ function SettingsModal({ }: Props) {
         <button onClick={() => toggleFullScreen()}>Full Screen</button>
         <DownloadButton />
         <button onClick={() => setHide(false)}>Customize</button>
-        {/* <ShowWindowSize /> */}
     </div>
 
     return (
@@ -81,21 +70,6 @@ function SettingsModal({ }: Props) {
             </div>
         </div >
     )
-}
-
-function FileUpload() {
-    let ref = React.useRef<HTMLElement>(null);
-    let setLocalImage = useMediaStore(state => state.setLocalImage);
-
-    return <input type="file" name="" id="" onChange={(e) => {
-        // access the uploaded image file and generate URL
-        console.log(e.currentTarget.files, 'wat')
-        const image = e.currentTarget.files[0];
-        // save file as objectUrl
-        const BGURL = URL.createObjectURL(image);
-        console.log(BGURL, 'what')
-        setLocalImage(BGURL);
-    }} />
 }
 
 export default SettingsModal

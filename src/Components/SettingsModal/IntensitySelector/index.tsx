@@ -1,11 +1,11 @@
-import React from 'react'
+
 import './styles.css';
 import kakaGlobalState from '../../../store/slices/slideModifications';
-type Props = {}
 
-function IntensitySelector({ }: Props) {
-    let setIntensity = kakaGlobalState((state) => state.setIntensity);
-    let intensity = kakaGlobalState((state) => state.intensity);
+
+function IntensitySelector() {
+    const setIntensity = kakaGlobalState((state) => state.setIntensity);
+    const intensity = kakaGlobalState((state) => state.intensity);
     return (
         <div className="intensity-blend">
             <label htmlFor="">Blend Intensity</label>

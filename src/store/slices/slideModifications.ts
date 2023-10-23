@@ -18,7 +18,7 @@ type SlideAppearance = {
         backgroundColor: string;
     };
     blendMode: BlendModes;
-    intensity: Number;
+    intensity: number;
     colorFilter: ColorFilter | string;
     // localImage: string | null;
     // setLocalImage: (str) => void;

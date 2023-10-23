@@ -3,11 +3,11 @@ import './styles.css';
 import kakaGlobalState from '../../../store/slices/slideModifications';
 type Props = {}
 
-function MixBlendModeSelector({ }: Props) {
+function MixBlendModeSelector() {
 
-    let setBlendMode = kakaGlobalState((state) => state.setBlendMode);
-    let blendMode = kakaGlobalState((state) => state.blendMode);
-    let MIXBLENDS = ["normal", "multiply", "hardlight", "difference", "color-burn", "screen", "overlay"];
+    const setBlendMode = kakaGlobalState((state) => state.setBlendMode);
+    const blendMode = kakaGlobalState((state) => state.blendMode);
+    const MIXBLENDS = ["normal", "multiply", "hardlight", "difference", "color-burn", "screen", "overlay"];
     return (
         <div className="mix-blend">
             <select name="" id="" defaultValue={blendMode} onChange={(e) => {

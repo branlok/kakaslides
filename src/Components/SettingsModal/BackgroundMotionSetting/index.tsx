@@ -1,13 +1,12 @@
 import kakaGlobalState from '../../../store/slices/slideModifications';
 import './styles.css';
-type Props = {}
 
-function BackgroundMotionSetting({ }: Props) {
+function BackgroundMotionSetting() {
 
-    let backgroundMotion = kakaGlobalState(state => state.backgroundMotion);
-    let setbackgroundMotion = kakaGlobalState(state => state.setBackgroundMotion);
+    const backgroundMotion = kakaGlobalState(state => state.backgroundMotion);
+    const setbackgroundMotion = kakaGlobalState(state => state.setBackgroundMotion);
     const changeBackgroundSetting = (e) => {
-        let val = e.currentTarget.value;
+        const val = e.currentTarget.value;
         setbackgroundMotion(val);
     }
     return (
