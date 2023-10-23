@@ -6,10 +6,11 @@ import useBlackbarSettings from '../../../store/slices/slideModifications';
 type Props = {
     defaultText?: string
     defaultTextLayout?: "vertical" | "horizontal"
+    alignText?: "left" | "center"
     defaultSize?: "xxs" | "xs" | "sm" | "md" | "lg"
 }
 
-function TextContainer({ defaultText = "My Guy", defaultSize = "xs", defaultTextLayout = "horizontal" }: Props) {
+function TextContainer({ defaultText = "My Guy", defaultSize = "xs", defaultTextLayout = "horizontal", alignText = "center" }: Props) {
     let [text, setText] = React.useState(defaultText);
     let [fontFamily, setFontFamily] = React.useState("Arial");
     let [fontColor, setFontColor] = React.useState("White");
@@ -53,7 +54,7 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs", defaultText
 
 
     return (
-        <div ref={ref} onClick={turnOnEditMode} onMouseOver={mouseInContainer} onMouseLeave={mouseLeftContainer} className={`text-container ${size} ${editMode ? "edit-on" : ""} ${textLayout === "vertical" ? "vertical" : ""}`}>
+        <div ref={ref} onClick={turnOnEditMode} onMouseOver={mouseInContainer} onMouseLeave={mouseLeftContainer} className={`text-container ${size} ${editMode ? "edit-on" : ""} ${textLayout === "vertical" ? "vertical" : ""} ${alignText === "left" ? "text-left" : ""}`}>
             {hovering && !editMode && <CTA />}
             {editMode && <Tooltip fontColor={fontColor} setFontColor={setFontColor} turnOffEditMode={turnOffEditMode} parentContainer={ref} defaultFont={fontFamily} setCurrentFont={setFontFamily} />}
             {/* Toggle between EditMode and Presentation Mode */}

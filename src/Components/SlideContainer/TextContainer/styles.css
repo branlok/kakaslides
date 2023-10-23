@@ -63,6 +63,13 @@ form {
         /* max-height: 20vh; */
         max-height: 45vh;
     }
+    &.text-left .presentable-text {
+        text-align: left;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        max-height: 45vh;
+    }
     &.xxs,
     input.xxs {
         min-height: 2rem;

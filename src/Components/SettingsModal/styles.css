@@ -1,6 +1,6 @@
 @keyframes translateLeft {
     from {
-        transform: translateX(30px);
+        transform: translateX(80px);
         opacity: 0;
     }
     to {
@@ -40,7 +40,7 @@
     width: 530px;
     /* height: 300px; */
     box-shadow: 0px 0px 3px black;
-    background-color: rgba(171, 46, 46, 0.8);
+    background-color: rgba(171, 46, 46, 0.4);
     backdrop-filter: blur(10px);
     border: 2px solid black;
     border-radius: 10px;
@@ -83,8 +83,8 @@
         flex-direction: column;
         padding: 10px;
         width: calc(100% - 25px);
-        border-left: 3px solid rgba(0, 0, 0,0.8);
-        box-shadow: inset 4px 0px rgba(0, 0, 0, 0.8), -0px 0px 10px rgba(0,0,0,0.8);
+        border-left: 3px solid rgba(0, 0, 0, 0.8);
+        box-shadow: inset 4px 0px rgba(0, 0, 0, 0.8), -0px 0px 10px rgba(0, 0, 0, 0.8);
         margin-left: 25px;
         padding-top: 2px;
         border-radius: 10px 10px 10px 10px;
@@ -213,18 +213,25 @@
 .setting-collapsed {
     display: flex;
     position: absolute;
-    top: 20px;
-    right: 20px;
-    opacity: 0.5;
+    top: 30px;
+    right: 10px;
+    /* width: 100%; */
+    align-items: center;
+    justify-content: center;
     button {
         border-style: none;
         background-color: transparent;
-        border: 1px solid rgba(159, 159, 159, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         background-color: black;
         cursor: pointer;
         border-radius: 50px;
         padding: 5px 15px;
         font-weight: bold;
         margin: 0px 4px;
+        opacity: 0.5;
+        transition: 0.2s;
+        &:hover {
+            opacity: 1;
+        }
     }
 }

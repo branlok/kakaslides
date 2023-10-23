@@ -2,17 +2,15 @@ import { useLayoutEffect, useRef } from "react"
 import useBlackbarSettings from "../../store/slices/slideModifications"
 import "./styled.css"
 import BgImage from "./BgImage";
-import TextContainer from "./TextContainer";
 import React from "react";
 import RegularLayout from "../Layouts/Regular/RegularLayout";
 import IdentityLayout from "../Layouts/Identity/IdentityLayout";
+import ExcerptLayout from "../Layouts/Excerpt/ExcerptLayout";
 
-type Props = {}
-
-function SlideContainer({ }: Props) {
-    let blackBarsVisual = useBlackbarSettings(state => state.blackBarsVisual);
-    let mySlide = useRef<HTMLElement>(null);
-    let [layoutType, setLayoutType] = React.useState("identity");
+function SlideContainer() {
+    const blackBarsVisual = useBlackbarSettings(state => state.blackBarsVisual);
+    const mySlide = useRef<HTMLElement>(null);
+    const [layoutType, setLayoutType] = React.useState("regular");
 
     useLayoutEffect(() => {
         if (mySlide.current) {
@@ -22,19 +20,14 @@ function SlideContainer({ }: Props) {
 
     }, [blackBarsVisual])
 
+    
+
     return (
         <div ref={mySlide} className='slide-container default-structure'>
             <BgImage />
             {layoutType === "regular" && <RegularLayout />}
             {layoutType === "identity" && <IdentityLayout />}
-            {/* <TextContainer defaultText={PRESET_LAYOUT[colorFilter].title.value} defaultSize={PRESET_LAYOUT[colorFilter].title.fontSize} />
-            <TextContainer defaultText={PRESET_LAYOUT[colorFilter].subtitle.value} />
-            <TextContainer defaultText={PRESET_LAYOUT[colorFilter].subscript.value} defaultSize="xxs" />
-            <div className="bottom-text">
-                <TextContainer defaultText={"⏶"} defaultSize="sm" />
-                <TextContainer defaultText={"4K09"} defaultSize="xxs" />
-            </div> */}
-
+            {layoutType === "excerpt" && <ExcerptLayout />}
         </div>
     )
 }

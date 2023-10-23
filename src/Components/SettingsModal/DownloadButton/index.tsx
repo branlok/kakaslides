@@ -10,10 +10,10 @@ function UploadImageButton({ }: Props) {
     let [state, setState] = React.useState('idle')
     const present = {
         idle: "Download",
-        loading: "Loading",
+        loading: "Generating",
     }
     return (
-        <button className="submit-button" onClick={(e) => {
+        <button className="submit-button" disabled={state === "loading"} onClick={(e) => {
             let nodez = document.querySelector('.slide-container');
             setState('loading');
             htmlToImage.toPng(nodez).then(function (dataUrl) {
