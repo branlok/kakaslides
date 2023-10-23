@@ -7,7 +7,7 @@ import DownloadButton from "./DownloadButton";
 import IntensitySelector from "./IntensitySelector";
 import BackgroundMotionSetting from "./BackgroundMotionSetting";
 import TextMotionSetting from "./TextMotionSetting";
-import cross from "../../assets/cross.svg";
+import cross from "../../assets/Cross.svg";
 
 
 function SettingsModal() {
