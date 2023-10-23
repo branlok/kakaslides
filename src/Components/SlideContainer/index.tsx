@@ -1,5 +1,5 @@
-import { useLayoutEffect, useRef } from "react"
-import useBlackbarSettings from "../../store/slices/slideModifications"
+import { useEffect, useLayoutEffect, useRef } from "react"
+import kakaGlobalState from "../../store/slices/slideModifications"
 import "./styled.css"
 import BgImage from "./BgImage";
 import React from "react";
@@ -8,9 +8,23 @@ import IdentityLayout from "../Layouts/Identity/IdentityLayout";
 import ExcerptLayout from "../Layouts/Excerpt/ExcerptLayout";
 
 function SlideContainer() {
-    const blackBarsVisual = useBlackbarSettings(state => state.blackBarsVisual);
+    const blackBarsVisual = kakaGlobalState(state => state.blackBarsVisual);
     const mySlide = useRef<HTMLElement>(null);
     const [layoutType, setLayoutType] = React.useState("regular");
+
+    useEffect(() => {
+        switch (window.location.pathname) {
+            case "/identity":
+                setLayoutType('identity');
+                break;
+            case "/excerpt":
+                setLayoutType('excerpt');
+                break;
+            default:
+                setLayoutType('regular');
+        }
+
+    }, [])
 
     useLayoutEffect(() => {
         if (mySlide.current) {
@@ -19,8 +33,6 @@ function SlideContainer() {
         }
 
     }, [blackBarsVisual])
-
-    
 
     return (
         <div ref={mySlide} className='slide-container default-structure'>

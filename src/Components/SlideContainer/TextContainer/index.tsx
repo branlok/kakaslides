@@ -2,7 +2,7 @@ import React from 'react'
 import "./styles.css"
 // import WebFont from 'webfontloader';
 import { Github } from "@uiw/react-color"
-import useBlackbarSettings from '../../../store/slices/slideModifications';
+import kakaGlobalState from '../../../store/slices/slideModifications';
 type Props = {
     defaultText?: string
     defaultTextLayout?: "vertical" | "horizontal"
@@ -144,7 +144,7 @@ function EditForm({ text, size, saveNewText }) {
 }
 function PresentableText({ text, size }) {
 
-    let textMotion = useBlackbarSettings(state => state.textMotion);
+    let textMotion = kakaGlobalState(state => state.textMotion);
     let mapping = {
         ["Fast"]: "fast-animation",
         ["Slow"]: "slow-animation",

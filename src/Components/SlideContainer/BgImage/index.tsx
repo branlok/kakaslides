@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from 'react'
 import useMediaStore from '../../../store/slices/mediaStore';
 import "./styles.css"
-import useBlackbarSettings from '../../../store/slices/slideModifications';
+import kakaGlobalState from '../../../store/slices/slideModifications';
 import hexToRgb from '../../../util/hexToRGB';
 type Props = {}
 
 function BgImage({ }: Props) {
     // Grabs Image URL FROM STORE
     let { topImage, bottomImage } = useMediaStore();
-    let blendMode = useBlackbarSettings(state => state.blendMode);
-    let backgroundMotion = useBlackbarSettings(state => state.backgroundMotion);
-    let intensity = useBlackbarSettings(state => state.intensity);
-    let colorFilter = useBlackbarSettings(state => state.colorFilter);
+    let blendMode = kakaGlobalState(state => state.blendMode);
+    let backgroundMotion = kakaGlobalState(state => state.backgroundMotion);
+    let intensity = kakaGlobalState(state => state.intensity);
+    let colorFilter = kakaGlobalState(state => state.colorFilter);
     let elem = useRef(null);
     let ref = useRef(null)
     useEffect(() => {

@@ -1,11 +1,11 @@
-import useBlackbarSettings from '../../../store/slices/slideModifications';
+import kakaGlobalState from '../../../store/slices/slideModifications';
 import './styles.css';
 type Props = {}
 
 function BackgroundMotionSetting({ }: Props) {
 
-    let backgroundMotion = useBlackbarSettings(state => state.backgroundMotion);
-    let setbackgroundMotion = useBlackbarSettings(state => state.setBackgroundMotion);
+    let backgroundMotion = kakaGlobalState(state => state.backgroundMotion);
+    let setbackgroundMotion = kakaGlobalState(state => state.setBackgroundMotion);
     const changeBackgroundSetting = (e) => {
         let val = e.currentTarget.value;
         setbackgroundMotion(val);

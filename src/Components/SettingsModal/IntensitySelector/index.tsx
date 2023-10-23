@@ -1,11 +1,11 @@
 import React from 'react'
 import './styles.css';
-import useBlackbarSettings from '../../../store/slices/slideModifications';
+import kakaGlobalState from '../../../store/slices/slideModifications';
 type Props = {}
 
 function IntensitySelector({ }: Props) {
-    let setIntensity = useBlackbarSettings((state) => state.setIntensity);
-    let intensity = useBlackbarSettings((state) => state.intensity);
+    let setIntensity = kakaGlobalState((state) => state.setIntensity);
+    let intensity = kakaGlobalState((state) => state.intensity);
     return (
         <div className="intensity-blend">
             <label htmlFor="">Blend Intensity</label>

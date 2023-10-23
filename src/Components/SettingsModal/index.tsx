@@ -1,5 +1,5 @@
 import React from "react";
-import useBlackbarSettings from "../../store/slices/slideModifications";
+import kakaGlobalState from "../../store/slices/slideModifications";
 import "./styles.css"
 import useMediaStore from "../../store/slices/mediaStore";
 import ColorSelector from "./ColorSelectors";
@@ -15,11 +15,11 @@ type Props = {}
 
 function SettingsModal({ }: Props) {
 
-    const toggleBlackBar = useBlackbarSettings(state => state.toggleBlackBar);
-    const adjustHeight = useBlackbarSettings(state => state.adjustHeight);
-    const setBlendMode = useBlackbarSettings(state => state.setBlendMode);
-    const intensity = useBlackbarSettings(state => state.intensity);
-    const setIntensity = useBlackbarSettings(state => state.setIntensity);
+    const toggleBlackBar = kakaGlobalState(state => state.toggleBlackBar);
+    const adjustHeight = kakaGlobalState(state => state.adjustHeight);
+    const setBlendMode = kakaGlobalState(state => state.setBlendMode);
+    const intensity = kakaGlobalState(state => state.intensity);
+    const setIntensity = kakaGlobalState(state => state.setIntensity);
     let MIXBLENDS = ["normal", "multiply", "hardlight", "difference", "color-burn", "screen", "overlay"];
     let PRESETCOLOURS = ["red", "orange", "blue"];
     const [mouseOver, onMouseOver] = React.useState(false);

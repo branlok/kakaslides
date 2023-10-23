@@ -1,10 +1,10 @@
 import React from 'react'
 import TextContainer from '../../SlideContainer/TextContainer'
-import useBlackbarSettings, { PRESET_LAYOUT } from '../../../store/slices/slideModifications';
+import kakaGlobalState, { PRESET_LAYOUT } from '../../../store/slices/slideModifications';
 type Props = {}
 
 function RegularLayout({ }: Props) {
-    let colorFilter = useBlackbarSettings(state => state.colorFilter);
+    let colorFilter = kakaGlobalState(state => state.colorFilter);
     return (
         <>
             <TextContainer defaultText={PRESET_LAYOUT[colorFilter].title.value} defaultSize={PRESET_LAYOUT[colorFilter].title.fontSize} />

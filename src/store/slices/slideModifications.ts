@@ -151,7 +151,7 @@ export let PRESET_LAYOUT = {
     },
 };
 
-const useBlackbarSettings = create<SlideAppearance>((set) => ({
+const kakaGlobalState = create<SlideAppearance>((set) => ({
     blackBarsOn: true,
     blackBarsVisual: {
         height: 100,
@@ -218,4 +218,4 @@ const useBlackbarSettings = create<SlideAppearance>((set) => ({
     },
 }));
 
-export default useBlackbarSettings;
+export default kakaGlobalState;

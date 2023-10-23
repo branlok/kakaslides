@@ -9,6 +9,15 @@
     }
 }
 
+@keyframes pulse {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
 @keyframes fadeInRight {
     from {
         transform: translateX(50px);

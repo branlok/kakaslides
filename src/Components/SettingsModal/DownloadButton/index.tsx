@@ -10,7 +10,7 @@ function UploadImageButton({ }: Props) {
     let [state, setState] = React.useState('idle')
     const present = {
         idle: "Download",
-        loading: "Generating",
+        loading: "Building",
     }
     return (
         <button className="submit-button" disabled={state === "loading"} onClick={(e) => {
