@@ -1,7 +1,6 @@
 import React from 'react'
 import './styles.css';
-import useBlackbarSettings from '../../../store/slices/slideModifications';
-import { PRESET_LAYOUT } from '../../SlideContainer';
+import useBlackbarSettings, { PRESET_LAYOUT } from '../../../store/slices/slideModifications';
 type Props = {}
 
 function ColorSelector({ }: Props) {

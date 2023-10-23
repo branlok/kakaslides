@@ -1,19 +1,21 @@
 import React from 'react'
 import "./styles.css"
-import WebFont from 'webfontloader';
+// import WebFont from 'webfontloader';
 import { Github } from "@uiw/react-color"
 import useBlackbarSettings from '../../../store/slices/slideModifications';
 type Props = {
     defaultText?: string
+    defaultTextLayout?: "vertical" | "horizontal"
     defaultSize?: "xxs" | "xs" | "sm" | "md" | "lg"
 }
 
-function TextContainer({ defaultText = "My Guy", defaultSize = "xs" }: Props) {
+function TextContainer({ defaultText = "My Guy", defaultSize = "xs", defaultTextLayout = "horizontal" }: Props) {
     let [text, setText] = React.useState(defaultText);
     let [fontFamily, setFontFamily] = React.useState("Arial");
     let [fontColor, setFontColor] = React.useState("White");
     let [editMode, setEditMode] = React.useState(false);
     let [hovering, setHovering] = React.useState(false);
+    let [textLayout, setTextLayout] = React.useState(defaultTextLayout);
 
     // if touched, then we no longer use default text;
     let [contaminated, setcontaminated] = React.useState(false);
@@ -51,7 +53,7 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs" }: Props) {
 
 
     return (
-        <div ref={ref} onClick={turnOnEditMode} onMouseOver={mouseInContainer} onMouseLeave={mouseLeftContainer} className={`text-container ${size} ${editMode ? "edit-on" : ""}`}>
+        <div ref={ref} onClick={turnOnEditMode} onMouseOver={mouseInContainer} onMouseLeave={mouseLeftContainer} className={`text-container ${size} ${editMode ? "edit-on" : ""} ${textLayout === "vertical" ? "vertical" : ""}`}>
             {hovering && !editMode && <CTA />}
             {editMode && <Tooltip fontColor={fontColor} setFontColor={setFontColor} turnOffEditMode={turnOffEditMode} parentContainer={ref} defaultFont={fontFamily} setCurrentFont={setFontFamily} />}
             {/* Toggle between EditMode and Presentation Mode */}
@@ -86,7 +88,7 @@ function Tooltip({ fontColor, setFontColor, turnOffEditMode, parentContainer, de
     let [selectFont, setSelectFont] = React.useState(defaultFont);
     let currentState = useGoogleFonts(parentContainer, selectFont);
     let [revealColorPicker, setRevealColorPicker] = React.useState(false);
-    const fontList = ['Arial', 'Sometype Mono', 'Playfair Display', 'Josefin Sans', 'Pixelify Sans', 'Charm', 'Noto Sans Japanese', 'Noto Sans Korean', 'Zen Old Mincho'];
+    const fontList = ['Arial', 'Sometype Mono', 'Playfair Display', 'Josefin Sans', 'Pixelify Sans', 'Charm', 'Noto Sans Japanese', 'Noto Sans Korean'];
     let ref = React.useRef<HTMLElement>(null);
     const switchFont = (e) => {
         e.preventDefault();
@@ -96,7 +98,7 @@ function Tooltip({ fontColor, setFontColor, turnOffEditMode, parentContainer, de
 
     return <div ref={ref} className="edit-container">
 
-        {currentState === "loading" ? <div>loading</div> : <select defaultValue={selectFont} onChange={switchFont}>
+        {currentState === "loading" ? <div>loading</div> : <select className="font-select" defaultValue={selectFont} onChange={switchFont}>
             {fontList.map(item => <option key={item} value={item}>{item}</option>)}
         </select>}
 

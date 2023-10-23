@@ -34,6 +34,7 @@ form {
     position: relative;
     margin: 5px;
     border: 2px solid transparent;
+
     &:hover {
         transition: 0.5s;
         border: 2px dashed rgb(189, 189, 189);
@@ -50,6 +51,17 @@ form {
     }
     .presentable-text {
         color: var(--text-color);
+        /* writing-mode: vertical-rl; */
+        /* writing-mode: vertical-rl; */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &.vertical .presentable-text {
+        writing-mode: vertical-rl;
+        /* max-height: 20vh; */
+        max-height: 45vh;
     }
     &.xxs,
     input.xxs {
@@ -114,7 +126,7 @@ form {
         /* width: 350px; */
         /* z-index: 1; */
         /* box-shadow: 0px 0px 5px 2px rgb(32, 32, 32); */
-        height: 40px;
+        height: 45px;
         display: flex;
         /* border: 2px dashed rgb(189, 189, 189); */
         border-bottom: 0px;
@@ -126,8 +138,9 @@ form {
         /* border-bottom: 2px solid #e89c26; */
         /* border-radius: 5px; */
         backdrop-filter: blur(5px);
-        padding: 2px 10px;
-        box-sizing: content-box;
+        padding: 5px 2px;
+        /* box-sizing: content-box; */
+
         /* animation: fadeIn 0.5s ease; */
         /* &:before {
             content: "";
@@ -145,6 +158,25 @@ form {
         > span,
         > select {
             margin: 0px 5px;
+        }
+        .font-select {
+            appearance: none;
+            border-style: none;
+            background-color: #1c1c1c;
+            height: 100%;
+            width: 100%;
+            font-weight: bold;
+            padding: 5px 20px;
+            border-radius: 5px;
+            border: 1px solid rgb(172, 172, 172);
+            cursor: pointer;
+            flex: 1;
+            transition: 0.2s;
+            outline: none;
+            &:hover {
+                box-shadow: 0px 0px 2px rgba(0, 0, 0, 0);
+                background-color: black;
+            }
         }
         span {
             font-size: 10px;

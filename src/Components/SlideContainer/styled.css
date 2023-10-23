@@ -38,3 +38,15 @@
     padding: 10px;
     width: 100%;
 }
+
+.bottom-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: var(--bar-height);
+    display: flex;
+    justify-content: center;
+}

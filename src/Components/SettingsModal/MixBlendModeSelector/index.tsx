@@ -14,7 +14,7 @@ function MixBlendModeSelector({ }: Props) {
                 setBlendMode(e.currentTarget.value)
             }}>
                 {MIXBLENDS.map(item => {
-                    return <option value={item}>{item}</option>
+                    return <option key={item} value={item}>{item}</option>
                 })}
             </select>
         </div>
