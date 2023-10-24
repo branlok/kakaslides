@@ -13,6 +13,7 @@ import cross from "../../assets/Cross.svg";
 function SettingsModal() {
     const [mouseOver, onMouseOver] = React.useState(false);
     const [hide, setHide] = React.useState(true);
+    const [toggledInfo, setToggledInfo] = React.useState(false);
     function toggleFullScreen() {
         if (!document.fullscreenElement) {
             document.documentElement.requestFullscreen();
@@ -36,8 +37,11 @@ function SettingsModal() {
                 onMouseOver(false)
             }}
         >
-            <div className="branding">kakaslides</div>
-            <div className="content">
+            <div className="branding" onClick={() => setToggledInfo(prev => !prev)}>kakaslides 〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰〰</div>
+            <div className={`behind ${toggledInfo ? "behind-show" : ""}`}>
+                bruh
+            </div>
+            <div className={`content ${toggledInfo ? "content-hide" : ""}`}>
                 {/* color picker */}
                 <aside className="toolbar-wrapper">
                     <h1>Settings</h1>

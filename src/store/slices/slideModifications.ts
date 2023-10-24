@@ -153,10 +153,10 @@ export let PRESET_LAYOUT = {
 const kakaGlobalState = create<SlideAppearance>((set) => ({
     blackBarsOn: true,
     blackBarsVisual: {
-        height: 100,
+        height: 80,
         backgroundColor: "#00000000",
     },
-    blendMode: "color-burn",
+    blendMode: "multiply",
     intensity: 95,
     colorFilter: "#dd0a0a",
     backgroundMotion: "Sliding",

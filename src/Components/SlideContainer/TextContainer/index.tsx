@@ -82,9 +82,10 @@ function CTA() {
             document.removeEventListener('mousemove', trackMouse);
         }
     }, [])
-
-    return <div className="cta-message" ref={ref}>Click to Edit</div>
+    return null;
+    // return <div className="cta-message" ref={ref}>Click to Edit</div>
 }
+
 function Tooltip({ fontColor, setFontColor, turnOffEditMode, parentContainer, defaultFont, setCurrentFont }) {
     let [selectFont, setSelectFont] = React.useState(defaultFont);
     let currentState = useGoogleFonts(parentContainer, selectFont);

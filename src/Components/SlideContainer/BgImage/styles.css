@@ -24,6 +24,17 @@
     z-index: -2;
     background-position: center;
     animation: slide 20s linear infinite;
+    /* &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: var(--blend-mode);
+        background-color: var(--alpha-level);
+        z-index: 2;
+    } */
 }
 .overlay-2 {
     /* filter: sepia(0.5); */

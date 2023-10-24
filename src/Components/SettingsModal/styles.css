@@ -9,6 +9,18 @@
     }
 }
 
+@keyframes translateRight {
+    from {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(80px);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
 @keyframes pulse {
     from {
         opacity: 1;
@@ -39,6 +51,22 @@
     }
     100% {
         opacity: 0.2;
+    }
+}
+.behind {
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    height: 100%;
+    width: calc(100% - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    transition: 0.6s;
+    &.behind-show {
+        transition: 0.6s;
+        opacity: 1;
     }
 }
 .setting-window {
@@ -74,8 +102,8 @@
         opacity: 0.3;
     }
     .branding {
-        min-width: 25px;
-        max-width: 25px;
+        width: 300px;
+        cursor:pointer;
         /* border-right: 1px dashed white; */
         /* border:1px solid white; */
 
@@ -85,7 +113,7 @@
         left: 0;
         transform-origin: 0 0;
         font-weight: bold;
-        transform: rotate(90deg) translateX(25%) translateY(-25px);
+        transform: rotate(90deg) translateX(5%) translateY(-25px);
     }
     .content {
         display: flex;
@@ -101,7 +129,9 @@
         animation: translateLeft 0.8s ease forwards;
         opacity: 0;
         animation-delay: 0s;
-
+        &.content-hide {
+            animation: translateRight 0.8s ease forwards;
+        }
         > .toolbar-wrapper {
             display: flex;
             width: 100%;
