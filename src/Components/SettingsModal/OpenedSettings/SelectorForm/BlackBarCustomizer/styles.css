@@ -1,0 +1,85 @@
+.black-bar-customizer-wrapper {
+    .hex-input-wrapper {
+        height: 100%;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        .hex-color-preview {
+            min-height: 20px;
+            min-width: 20px;
+            margin-right: 2px;
+            border-radius: 5px;
+            flex: 0 0;
+        }
+        .hex-color-input {
+            height: 100%;
+            width: 70px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid black;
+        }
+    }
+    .bar-height-wrapper {
+        height: 100%;
+        display: flex;
+        position: relative;
+        /* flex-direction: column; */
+        label {
+            font-size: 0.725rem;
+            position: absolute;
+            top: -10px;
+            left: 0px;
+            width: 100%;
+            text-align: end;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            --rotate: "rotate(10deg)";
+            appearance: none;
+            background-color: rgb(181, 132, 29);
+            box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.3),
+                inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+            height: 1px;
+            width: 100%;
+            font-weight: bold;
+            margin: 0px;
+            padding: 1px;
+            border-radius: 5px;
+            border: 1px solid orange;
+            border-radius: 50px;
+            margin-top: 12px;
+            /* transition: 0.4s; */
+            &::-moz-range-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: 1px solid transparent;
+                background-color: transparent;
+                background-size: cover;
+                transform-origin: center;
+                transform: scale(1.7) var(--rotate);
+                transition: 0.15s;
+                background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+                cursor: pointer;
+            }
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: 1px solid transparent;
+                background-color: transparent;
+                transform-origin: center;
+                background-size: cover;
+                transition: 0.05s;
+                transform: scale(1.7) var(--rotate);
+                background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+                cursor: pointer;
+            }
+        }
+    }
+}

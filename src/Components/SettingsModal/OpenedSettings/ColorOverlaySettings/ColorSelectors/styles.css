@@ -1,0 +1,47 @@
+.color-list {
+    width: 130px;
+    height: 100%;
+    /* margin: auto; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+    background-color: black;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    input[type="radio"] {
+        appearance: none;
+        /* border: 1px solid white; */
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: -5px;
+        left: -7px;
+        /* display: none; */
+    }
+    .color {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border: 1px solid white;
+        margin: 0px 2px;
+        flex-shrink: 0;
+        border-radius: 50px;
+        box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+        border: 2px solid transparent;
+        transition: 0.2s;
+        float: left;
+        margin: 5px;
+        &[data-selected="true"] {
+            border: 2px solid white;
+        }
+        &[data-selected="false"] {
+            border: 2px solid transparent;
+        }
+        &:hover {
+            border: 2px solid white;
+        }
+    }
+}

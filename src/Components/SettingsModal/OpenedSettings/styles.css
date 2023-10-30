@@ -1,0 +1,59 @@
+@keyframes slideRtoL {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+.opened-settings {
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    border: 5px solid rgba(0, 0, 0, 1);
+    background-color: rgba(78, 0, 0, 0.8);
+    border-radius: 10px;
+    border-right: 0px;
+    border-left: 25px solid black;
+    backdrop-filter: blur(5px);
+    width: 375px;
+    height: 600px;
+    animation: slideRtoL 0.3s ease forwards;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    .settings-title {
+        margin: 0px;
+        padding: 0px;
+        font-size: 1.125rem;
+        text-align: end;
+        border-bottom: 2px solid rgba(120, 120, 120, 0.517);
+        padding-bottom: 5px;
+        position: sticky;
+        backdrop-filter: blur(5px);
+        margin-left: -25px;
+        margin-top: -10px;
+        width: calc(100% + 50px);
+        padding-right: 20px;
+        position: sticky;
+        top: -10px;
+        left: 0px;
+        padding-top: 5px;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 4;
+    }
+    .setting-module {
+        border-radius: 20px;
+        padding: 2px;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        padding: 5px;
+        border: 1px solid rgba(110, 110, 110, 0.419);
+        margin: 5px 0px;
+        justify-content: flex-start;
+    }
+}

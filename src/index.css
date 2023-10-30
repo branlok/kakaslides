@@ -25,7 +25,9 @@
     --font-size-800: 2rem; /* 32px */
     --font-size-900: 2.25rem; /* 36px */
 }
-
+html {
+    overflow: hidden;
+}
 * {
     box-sizing: border-box;
 }
@@ -35,11 +37,13 @@ body {
     margin: 0;
     display: flex;
     place-items: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     overflow: hidden;
 }
-
+#root {
+    overflow: hidden;
+}
 @keyframes jitter {
     0% {
         transform: translateY(0px) translateX(0px);

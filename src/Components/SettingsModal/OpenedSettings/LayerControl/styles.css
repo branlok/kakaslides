@@ -1,0 +1,27 @@
+.layer-control-settings {
+    border-radius: 5px;
+    height: 135px;
+    width: 100%;
+    header {
+        /* make header appear outside of the box, veritcal alignment */
+        width: 0px;
+        height: 100%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        position: relative;
+        h1 {
+            margin: 0px;
+            padding: 0px;
+            font-size: 0.625rem;
+            transform: rotate(-90deg);
+            transform-origin: 0 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin: -20px -25px;
+            width: 100px;
+            padding-left: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+}

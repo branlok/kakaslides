@@ -7,23 +7,46 @@
     }
 }
 
+@keyframes slideA {
+    from {
+        background-position: 0 50%;
+    }
+    to {
+        background-position: 200% 50%;
+    }
+}
+
+@keyframes slideB {
+    from {
+        background-position: 0 50%;
+    }
+    to {
+        background-position: 300% 50%;
+    }
+}
+
 .bg-image-container {
     --blend-mode: multiply;
-    --alpha-level: rgba(0, 0, 0, 0.5);
-    height: 100vh;
-    width: 100vw;
+    --alpha-level: rgba(167, 6, 6, 0.5);
+    --overlay1-opacity: 0.5;
+    --overlay2-opacity: 0.5;
+    height: 100%;
+    width: 100%;
     position: absolute;
     top: 0px;
     left: 0px;
     /* can make htis var, and conf on the zoom in */
+    /* background-image: url('https://images.unsplash.com/photo-1697541283989-bbefb5982de9?auto=format&fit=crop&q=80&w=3027&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
     background-size: 50%, 150%;
+    background-size: contain;
+    /* background-size: cover; */
     transform: scale(1);
     transform-origin: center;
     background-blend-mode: var(--blend-mode);
     background-color: var(--alpha-level);
     z-index: -2;
     background-position: center;
-    animation: slide 20s linear infinite;
+    animation: slide 5s linear infinite;
     /* &:after {
         content: "";
         position: absolute;
@@ -36,15 +59,44 @@
         z-index: 2;
     } */
 }
-.overlay-2 {
-    /* filter: sepia(0.5); */
-    /* background-color: rgba(255, 0, 0, 0.7); */
 
+.overlay-1 {
+    mix-blend-mode: var(--blend-mode);
+    /* background-color: rgba(255, 50, 150, 0.5); */
+    background-size: contain;
+    background-position: center;
+    /* background-image: url('https://images.unsplash.com/photo-1697541283989-bbefb5982de9?auto=format&fit=crop&q=80&w=3027&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+    /* background-repeat: no-repeat; */
+    background-size: 50%;
+    background-repeat: repeat;
     position: relative;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     top: 0px;
     left: 0px;
+    /* opacity: 0.5; */
+    opacity: var(--overlay1-opacity);
     position: absolute;
+    animation: slideA 90s linear infinite;
+    z-index: -1;
+}
+
+.overlay-2 {
+    mix-blend-mode: var(--blend-mode);
+    /* background-color: rgba(255, 50, 150, 0.5); */
+    background-size: contain;
+    background-position: center;
+    background-size: 150%;
+    /* background-image: url('https://images.unsplash.com/photo-1697541283989-bbefb5982de9?auto=format&fit=crop&q=80&w=3027&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+    /* background-repeat: no-repeat; */
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    /* opacity: 0.5; */
+    opacity: var(--overlay2-opacity);
+    position: absolute;
+    animation: slideB 90s linear infinite;
     z-index: -1;
 }

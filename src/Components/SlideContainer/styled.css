@@ -1,11 +1,11 @@
 @keyframes borderAnimation {
     from {
-        border-top: 0px solid black;
-        border-bottom: 0px solid black;
+        border-top: 0px solid var(--bar-bgColor);
+        border-bottom: 0px solid var(--bar-bgColor);
     }
     to {
-        border-top: var(--bar-height) solid black;
-        border-bottom: var(--bar-height) solid black;
+        border-top: var(--bar-height) solid var(--bar-bgColor);
+        border-bottom: var(--bar-height) solid var(--bar-bgColor);
     }
 }
 .slide-container {
@@ -14,12 +14,12 @@
     transition: 0.5s;
     width: 100%;
     height: 100%;
-    border-color: var(--bar-bgColor, "black");
-    border-top: var(--bar-height) solid black;
-    border-bottom: var(--bar-height) solid black;
+    /* border-color: var(--bar-bgColor, "black"); */
+    border-top: var(--bar-height) solid var(--bar-bgColor);
+    border-bottom: var(--bar-height) solid var(--bar-bgColor);
     overflow: hidden;
     animation: borderAnimation 3s ease forwards;
-    /* border:1px solid pink; */
+    /* box-sizing: border-box; */
     .footer-title-wrapper {
         position: absolute;
         width: 100%;
@@ -37,6 +37,8 @@
     flex-direction: column;
     padding: 10px;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .bottom-text {

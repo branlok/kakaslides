@@ -1,13 +1,15 @@
 import React from "react";
 import "./styles.css"
-import ColorSelector from "./ColorSelectors";
-import MixBlendModeSelector from "./MixBlendModeSelector";
+// import ColorSelector from "./ColorSelectors";
+// import MixBlendModeSelector from "./MixBlendModeSelector";
 import UploadImageButton from "./UploadImageButton";
 import DownloadButton from "./DownloadButton";
 import IntensitySelector from "./IntensitySelector";
-import BackgroundMotionSetting from "./BackgroundMotionSetting";
+// import BackgroundMotionSetting from "./BackgroundMotionSetting";
 import TextMotionSetting from "./TextMotionSetting";
 import cross from "../../assets/Cross.svg";
+import CollapsedSettings from "./CollapsedSettings";
+import OpenedSettings from "./OpenedSettings";
 
 
 function SettingsModal() {
@@ -22,12 +24,17 @@ function SettingsModal() {
         }
     }
 
+    if (hide) return (
+        <CollapsedSettings handleOpenSettings={() => setHide(false)} />
+    )
+    return <OpenedSettings handleCloseSettings={() => setHide(true)} />
 
-    if (hide) return <div className={`setting-collapsed  ${mouseOver ? "mouse-over" : ""}`}>
-        <button onClick={() => toggleFullScreen()}>Full Screen</button>
-        <DownloadButton />
-        <button onClick={() => setHide(false)}>Customize</button>
-    </div>
+
+    // if (hide) return <div className={`setting-collapsed  ${mouseOver ? "mouse-over" : ""}`}>
+    //     <button onClick={() => toggleFullScreen()}>Full Screen</button>
+    //     <DownloadButton />
+    //     <button onClick={() => setHide(false)}>Customize</button>
+    // </div>
 
     return (
         <div className={`setting-window ${mouseOver ? "mouse-over" : ""}`} onMouseOver={() => {

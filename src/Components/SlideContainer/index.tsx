@@ -8,7 +8,8 @@ import IdentityLayout from "../Layouts/Identity/IdentityLayout";
 import ExcerptLayout from "../Layouts/Excerpt/ExcerptLayout";
 
 function SlideContainer() {
-    const blackBarsVisual = kakaGlobalState(state => state.blackBarsVisual);
+    const backgroundColor = kakaGlobalState(state => state.blackBarsVisual.backgroundColor);
+    const height = kakaGlobalState(state => state.blackBarsVisual.height);
     const mySlide = useRef<HTMLElement>(null);
     const [layoutType, setLayoutType] = React.useState("regular");
 
@@ -26,13 +27,13 @@ function SlideContainer() {
 
     }, [])
 
-    useLayoutEffect(() => {
-        if (mySlide.current) {
-            mySlide.current.style.setProperty('--bar-height', `${blackBarsVisual.height}px`)
-            mySlide.current.style.setProperty('--bar-bgColor', `${blackBarsVisual.backgroundColor}`)
-        }
+    useEffect(() => {
 
-    }, [blackBarsVisual])
+            console.log(backgroundColor, 'reyooad me')
+            mySlide.current.style.setProperty('--bar-height', `${height}px`)
+            mySlide.current.style.setProperty('--bar-bgColor', `${backgroundColor}`)
+
+    }, [height, backgroundColor])
 
     return (
         <div ref={mySlide} className='slide-container default-structure'>

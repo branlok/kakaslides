@@ -1,0 +1,7 @@
+.color-overlay-settings {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    height: 150px;
+    box-shadow: inset 0px 0px 10px black;
+}

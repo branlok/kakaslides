@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import useMediaStore from '../../../store/slices/mediaStore';
 import "./styles.css"
 import kakaGlobalState from '../../../store/slices/slideModifications';
 import hexToRgb from '../../../util/hexToRGB';
-type Props = {}
 
-function BgImage({ }: Props) {
+function BgImage() {
     // Grabs Image URL FROM STORE
     let { topImage, bottomImage } = useMediaStore();
     let blendMode = kakaGlobalState(state => state.blendMode);
@@ -14,36 +13,51 @@ function BgImage({ }: Props) {
     let colorFilter = kakaGlobalState(state => state.colorFilter);
     let elem = useRef(null);
     let ref = useRef(null)
+    let overlay = useRef(null);
+    let overlay1 = useRef(null);
     useEffect(() => {
-        if (elem.current) {
+        if (overlay.current && overlay1.current) {
             let placeholderImg = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/epARJYAAAAASUVORK5CYII=";
-            elem.current.style.backgroundImage = `url(${topImage ?? placeholderImg}), url('${bottomImage ?? placeholderImg}')`;
+            // overlay.current.style.backgroundImage = `url(${topImage ?? placeholderImg}), url('${bottomImage ?? placeholderImg}')`;
+            overlay.current.style.backgroundImage = `url(${topImage ?? placeholderImg})`;
+            overlay1.current.style.backgroundImage = `url(${bottomImage ?? placeholderImg})`;
         }
-    }, [elem, topImage, bottomImage])
+    }, [overlay1, topImage, bottomImage, overlay])
 
     useEffect(() => {
-        if (elem.current) {
-            elem.current.style.setProperty("--blend-mode", blendMode);
+        if (overlay1.current) {
+            overlay1.current.style.setProperty("--blend-mode", blendMode);
+            overlay.current.style.setProperty("--blend-mode", blendMode);
         }
-    }, [elem.current, blendMode])
+    }, [overlay1.current, blendMode, overlay.current])
 
     useEffect(() => {
         if (elem.current) {
             let result = hexToRgb(colorFilter);
-            elem.current.style.setProperty("--alpha-level", `rgba(${result[0]},${result[1]},${result[2]}, ${intensity / 100})`)
+            // changing ratio bg 1 and bg 2
+            overlay1.current.style.setProperty("--overlay1-opacity", `${intensity / 100}`)
+            overlay.current.style.setProperty("--overlay2-opacity", `${1 - (intensity / 100)}`)
+            elem.current.style.setProperty("--alpha-level", `rgba(${result[0]},${result[1]},${result[2]}, 1)`)
         }
-    }, [intensity, colorFilter])
+    }, [intensity, colorFilter, overlay, overlay1])
 
     useEffect(() => {
         if (elem.current) {
             if (backgroundMotion === "Sliding") {
                 elem.current.style.animation = "slide 80s linear infinite";
-                elem.current.style.backgroundSize = "50%, 150%"
+                // elem.current.style.backgroundSize = "contain"
+                // elem.current.style.backgroundRepeat = "repeat"
+                // elem.current.style.backgroundSize = "50%, 150%"
+                // later you can configure this.
+                // also known error with ios devices.
+                // background-blend do not work properly.
+
             } else if (backgroundMotion === "Mouse Tracking") {
                 elem.current.style.animation = "none";
                 elem.current.style.backgroundSize = "50%, 150%"
             } else {
                 elem.current.style.backgroundSize = "cover"
+                elem.current.style.animation = "none";
             }
         }
     })
@@ -80,7 +94,8 @@ function BgImage({ }: Props) {
 
     return (
         <div ref={ref} className="overlay">
-            <div className="overlay-2"></div>
+            <div ref={overlay1} className="overlay-1"></div>
+            <div ref={overlay} className="overlay-2"></div>
             <div ref={elem} className="bg-image-container"></div>
         </div>
     )

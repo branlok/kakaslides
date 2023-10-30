@@ -1,0 +1,38 @@
+.mix-blend {
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    select {
+        appearance: none;
+        border-style: none;
+        background-color: #1c1c1c;
+        width: 100%;
+        font-weight: bold;
+        padding: 15px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.2s;
+        height: 50px;
+        flex-shrink: 0;
+        margin: 0px;
+        border: 2px solid rgb(172, 172, 172);
+        &:focus {
+            border: 2px solid orange;
+            outline: none;
+        }
+        &:hover {
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0);
+            background-color: black;
+        }
+    }
+    .mix-mode-description-wrapper {
+        height: 100%;
+        padding: 0px;
+    }
+    p {
+        font-size: 0.675rem;
+    }
+}

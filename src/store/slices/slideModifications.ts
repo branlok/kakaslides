@@ -22,6 +22,8 @@ type SlideAppearance = {
     colorFilter: ColorFilter | string;
     // localImage: string | null;
     // setLocalImage: (str) => void;
+    setBlackbarHeight: (num: number) => void;
+    setBlackbarColor: (hex: string) => void;
     setIntensity: (num: number) => void;
     toggleBlackBar: () => void;
     adjustHeight: (pixels: number) => void;
@@ -154,13 +156,31 @@ const kakaGlobalState = create<SlideAppearance>((set) => ({
     blackBarsOn: true,
     blackBarsVisual: {
         height: 80,
-        backgroundColor: "#00000000",
+        backgroundColor: "#000000",
     },
     blendMode: "multiply",
     intensity: 95,
     colorFilter: "#dd0a0a",
     backgroundMotion: "Sliding",
     textMotion: "Slow",
+    setBlackbarColor(str) {
+        set((state) => ({
+            ...state,
+            blackBarsVisual: {
+                ...state.blackBarsVisual,
+                backgroundColor: str,
+            },
+        }));
+    },
+    setBlackbarHeight(num) {
+        set((state) => ({
+            ...state,
+            blackBarsVisual: {
+                ...state.blackBarsVisual,
+                height: num,
+            },
+        }));
+    },
     setTextMotion(motion: TextMotion) {
         set((state) => ({
             ...state,

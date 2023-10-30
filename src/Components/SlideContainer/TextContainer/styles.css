@@ -34,12 +34,14 @@ form {
     position: relative;
     margin: 5px;
     border: 2px solid transparent;
-
-    &:hover {
-        transition: 0.5s;
-        border: 2px dashed rgb(189, 189, 189);
-        cursor: pointer;
+    @media (hover: hover) {
+        &:hover {
+            transition: 0.5s;
+            border: 2px dashed rgb(189, 189, 189);
+            cursor: pointer;
+        }
     }
+
     &.edit-on {
         &:hover {
             border: 2px solid transparent;
