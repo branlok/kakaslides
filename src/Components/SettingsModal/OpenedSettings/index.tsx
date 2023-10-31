@@ -8,8 +8,6 @@ import BlackBarCustomizer from "./SelectorForm/BlackBarCustomizer";
 import TextMotionSetting from "./SelectorForm/TextMotion";
 import * as htmlToImage from "html-to-image";
 import Close from "../../../assets/Close.svg"
-import Kofi from "../../../assets/outlets/KofiLogo.png"
-import Github from "../../../assets/outlets/Github.svg"
 import "./styles.css";
 import InfoAndExternalLinks from "./InfoAndExternalLinks";
 function index({ handleCloseSettings }) {
@@ -43,10 +41,6 @@ function index({ handleCloseSettings }) {
     return (
         <>
             <div className="branding-nav">KakaSlide</div>
-            <div className="external-links">
-                <a href=""><img src={Kofi} alt="" /></a>
-                <a href=""><img src={Github} alt="" /></a>
-            </div>
             <div className="opened-settings" data-disabled={saving}>
                 <h1 className="settings-title"><div className="cta-wrapper">   <button className="close-button" onClick={handleCloseSettings}><img src={Close} alt="" /></button><button className="export-button" disabled={saving} onClick={handleSaveSlide}> {saving ? "Saving" : "Export"} </button></div> Customize Scene</h1>
                 {/* Holds Setting Groups */}
