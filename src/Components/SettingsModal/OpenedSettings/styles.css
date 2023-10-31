@@ -8,6 +8,51 @@
         opacity: 1;
     }
 }
+@keyframes fadeInNav {
+    from {
+        transform: rotate(-90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(-90deg);
+        opacity: 1;
+    }
+}
+.branding-nav {
+    position: absolute;
+    top: 600px;
+    right: 305px;
+    color: white;
+    z-index: 5;
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.725rem;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    animation: fadeInNav 0.5s ease forwards;
+    animation-delay: 0.2s;
+}
+.external-links {
+    position: absolute;
+    top: 70px;
+    right: 323px;
+    color: white;
+    z-index: 5;
+    margin: 0px;
+    padding: 0px;
+    font-size: 0.725rem;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    animation: fadeInNav 0.5s ease forwards;
+    animation-delay: 0.2s;
+    img {
+        width: 20px;
+    }
+}
 .opened-settings {
     position: absolute;
     top: 20px;
@@ -26,6 +71,14 @@
     padding-right: 20px;
     overflow-y: scroll;
     overflow-x: hidden;
+    transition: 0.2s;
+    background-image: url("https://pbs.twimg.com/media/EmWhhfdW4AQ1aUX.png:large");
+    background-size: cover;
+    background-blend-mode: color-burn;
+    box-shadow: -2px -2px 0px rgb(106, 47, 47), -2px 2px 0px rgb(106, 47, 47);
+    &[data-disabled="true"] {
+        filter: brightness(0.2);
+    }
     .settings-title {
         margin: 0px;
         padding: 0px;
@@ -38,13 +91,52 @@
         margin-left: -25px;
         margin-top: -10px;
         width: calc(100% + 50px);
-        padding-right: 20px;
+        padding-right: 30px;
         position: sticky;
         top: -10px;
         left: 0px;
         padding-top: 5px;
         background-color: rgba(0, 0, 0, 0.6);
         z-index: 4;
+        display: flex;
+        justify-content: space-between;
+        .cta-wrapper {
+            height: 30px;
+            display: flex;
+            .close-button {
+                width: 40px;
+                height: 30px;
+                border-style: none;
+                background-color: transparent;
+                border-right: 2px double rgb(68, 68, 68);
+                padding-right: 10px;
+                cursor: pointer;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    stroke: white;
+                    padding: 0px;
+                    margin: 0px;
+                    padding-top: 1px;
+                }
+            }
+            .export-button {
+                border-style: none;
+                background-color: transparent;
+                font-weight: bold;
+                background-color: rgba(0, 0, 0, 0.5);
+                margin-left: 10px;
+                color: white;
+                border-radius: 15px;
+                padding: 0px 25px;
+                border: 2px dotted rgb(237, 68, 1);
+                cursor: pointer;
+                transition: 0.3s;
+                &:hover {
+                    background-color: rgba(237, 68, 1, 0.5);
+                }
+            }
+        }
     }
     .setting-module {
         border-radius: 20px;

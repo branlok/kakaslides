@@ -15,7 +15,6 @@ function BackgroundMotionSetting() {
         let value = e.currentTarget.value;
         // if malformat use last correctly formatted color
         if (HexRegExp.test(value)) {
-            console.log('we working?', value)
             setBlackbarColor(value);
         }
     }

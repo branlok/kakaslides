@@ -1,0 +1,168 @@
+.background-layer-customizer {
+    --image-url: '',
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    padding-top: 4px;
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+        background-image: var(--image-url);
+        background-size: cover;
+        z-index: -1;
+        background-blend-mode: color-burn;
+        border: 2px solid black;
+        opacity: 0.8;
+    }
+    .toggle-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-style: none;
+        color: rgb(186, 186, 186);
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #1c1c1c;
+        padding: 0px 2px;
+        flex-direction: column;
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+        transition: 0.3s;
+        border: 2px solid black;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.725rem;
+        height: 30px;
+        margin: 2px;
+        position: relative;
+        color: white;
+        overflow: hidden;
+        &:after {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            content: "";
+            background-color: rgba(255, 155, 48, 0.8);
+            height: 100%;
+            z-index: 0;
+            transition: 0.3s;
+            border-radius: 5px 0px 0px 5px;
+        }
+        &[data-step-level="0"]:after {
+            width: 0%;
+        }
+        &[data-step-level="1"]:after {
+            width: 25%;
+        }
+        &[data-step-level="2"]:after {
+            width: 50%;
+        }
+        &[data-step-level="3"]:after {
+            width: 75%;
+        }
+        &[data-step-level="4"]:after {
+            width: 100%;
+            /* round off */
+            border-radius: 5px;
+        }
+        span {
+            z-index: 1;
+        }
+    }
+    .group {
+        display: flex;
+        align-items: center;
+    }
+    .group.highlight {
+        background-color: black;
+        padding: 5px;
+    }
+    form {
+        justify-content: flex-end;
+        input[type="checkbox"] {
+            height: 20px;
+            width: 20px;
+            margin-left: 0px 5px;
+        }
+        label {
+            height: 20px;
+            line-height: 20px;
+        }
+    }
+    .mix-blend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-style: none;
+        /* height: 30px; */
+        height: 100%;
+        width: 100%;
+        padding: 0px 2px;
+        /* height: 30px; */
+        select {
+            height: 100%;
+            width: 100%;
+            padding: 0px 5px;
+            height: 28px;
+        }
+    }
+    label {
+        font-size: 0.725rem;
+        font-weight: bold;
+    }
+    input[type="range"] {
+        --rotate: "rotate(10deg)";
+        appearance: none;
+        background-color: black;
+        box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.3), inset 0px 0px 3px rgba(255, 255, 255, 0.5);
+        height: 1px;
+        width: 100%;
+        font-weight: bold;
+        margin: 0px;
+        padding: 1px;
+        border-radius: 5px;
+        border-radius: 50px;
+        /* transition: 0.4s; */
+        margin-left: 10px;
+        &::-moz-range-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            background-color: transparent;
+            background-size: cover;
+            transform-origin: center;
+            transform: scale(1.7) var(--rotate);
+            transition: 0.15s;
+            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            cursor: pointer;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            background-color: transparent;
+            transform-origin: center;
+            background-size: cover;
+            transition: 0.05s;
+            transform: scale(1.7) var(--rotate);
+            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            cursor: pointer;
+        }
+    }
+}

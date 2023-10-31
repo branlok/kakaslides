@@ -10,15 +10,15 @@
 }
 .slide-container {
     --bar-height: 100px;
-    --bar-bgColor: "black";
-    transition: 0.5s;
+    --bar-bgColor: "#000000";
+    /* transition: 0.5s; */
     width: 100%;
     height: 100%;
     /* border-color: var(--bar-bgColor, "black"); */
     border-top: var(--bar-height) solid var(--bar-bgColor);
     border-bottom: var(--bar-height) solid var(--bar-bgColor);
     overflow: hidden;
-    animation: borderAnimation 3s ease forwards;
+    /* animation: borderAnimation 2s ease forwards; */
     /* box-sizing: border-box; */
     .footer-title-wrapper {
         position: absolute;
@@ -26,6 +26,9 @@
         text-align: center;
         bottom: var(--bar-height);
         border: 1px solid red;
+    }
+    &.saving *{
+        animation-play-state: paused !important;
     }
 }
 

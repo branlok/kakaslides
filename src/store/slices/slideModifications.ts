@@ -9,7 +9,7 @@ type BlendModes =
     | "overlay"
     | "normal";
 type ColorFilter = "#0B76DA" | "#BC678B" | "#9167BC" | "#A6BC67" | "#E3A541" | "#E00C4B";
-type BackgroundMotion = "Sliding" | "Mouse Tracking" | "Off";
+type BackgroundMotion = "Sliding" | "Track Cursor" | "Off";
 type TextMotion = "None" | "Fast" | "Slow";
 type SlideAppearance = {
     blackBarsOn: boolean;
@@ -31,7 +31,7 @@ type SlideAppearance = {
     setColorFilter: (color: string) => void;
     setBlendMode: (blendModes: BlendModes) => void;
     // background Motion
-    backgroundMotion: "Sliding" | "Mouse Tracking" | "Off";
+    backgroundMotion: "Sliding" | "Track Cursor" | "Off";
     setBackgroundMotion: (on: BackgroundMotion) => void;
     textMotion: "None" | "Fast" | "Slow";
     setTextMotion: (on: TextMotion) => void;
@@ -158,7 +158,7 @@ const kakaGlobalState = create<SlideAppearance>((set) => ({
         height: 80,
         backgroundColor: "#000000",
     },
-    blendMode: "multiply",
+    blendMode: "normal",
     intensity: 95,
     colorFilter: "#dd0a0a",
     backgroundMotion: "Sliding",

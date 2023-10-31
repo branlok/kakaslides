@@ -1,7 +1,10 @@
 .layer-control-settings {
     border-radius: 5px;
-    height: 135px;
+    height: 145px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     header {
         /* make header appear outside of the box, veritcal alignment */
         width: 0px;
