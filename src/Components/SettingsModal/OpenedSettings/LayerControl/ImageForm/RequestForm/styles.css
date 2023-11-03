@@ -33,12 +33,30 @@
         margin: 5px;
     }
     img {
-        width: 50px;
+        width: 45px;
         height: 30px;
         object-fit: cover;
         border-radius: 5px;
-
+        animation: fadeIn 0.5s ease forwards;
+        opacity: 0;
         margin: 2px;
         margin-bottom: 0px;
+    }
+    span {
+        cursor: pointer;
+    }
+    span:active {
+        animation: jitter 0.1s ease forwards;
+        animation-iteration-count: 2;
+        display:inline-block;
+    }
+}
+
+@keyframes jitter {
+    from {
+        transform: translate(2px, 4px);
+    }
+    to {
+        transform: translate(-3px, 4px);
     }
 }

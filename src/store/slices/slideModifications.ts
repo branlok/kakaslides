@@ -161,7 +161,7 @@ const kakaGlobalState = create<SlideAppearance>((set) => ({
     blendMode: "normal",
     intensity: 95,
     colorFilter: "#dd0a0a",
-    backgroundMotion: "Sliding",
+    backgroundMotion: "Off",
     textMotion: "Slow",
     setBlackbarColor(str) {
         set((state) => ({

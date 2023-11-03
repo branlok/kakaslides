@@ -12,7 +12,7 @@ function RegularLayout({ }: Props) {
             <TextContainer defaultText={PRESET_LAYOUT[colorFilter].subscript.value} defaultSize="xxs" />
             <div className="bottom-text">
                 <TextContainer defaultText={"⏶"} defaultSize="sm" />
-                <TextContainer defaultText={"4K09"} defaultSize="xxs" />
+                <TextContainer defaultText={"動畫番號 無シ"} defaultSize="xxs" />
             </div>
         </>
     )

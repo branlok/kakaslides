@@ -72,9 +72,11 @@
     overflow-y: scroll;
     overflow-x: hidden;
     transition: 0.2s;
-    background-image: url("https://pbs.twimg.com/media/EmWhhfdW4AQ1aUX.png:large");
+    /* background-image: url("https://pbs.twimg.com/media/EmWhhfdW4AQ1aUX.png:large"); */
+    background-image: url("../../../assets/minimalbg/donut15.png");
     background-size: cover;
-    background-blend-mode: color-burn;
+    background-position: center;
+    /* background-blend-mode: color-burn; */
     box-shadow: -2px -2px 0px rgb(106, 47, 47), -2px 2px 0px rgb(106, 47, 47);
     &[data-disabled="true"] {
         filter: brightness(0.2);

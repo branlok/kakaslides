@@ -15,6 +15,7 @@ function index({ handleOpenSettings }) {
     const downloadSlide = () => {
         setDownloadStatus('loading');
         let targetNode = document.querySelector('.slide-container');
+        targetNode?.classList.add('saving');
         htmlToImage.toPng(targetNode).then(function () {
             htmlToImage.toPng(targetNode).then(function () {
                 htmlToImage.toPng(targetNode, { cacheBust: true }).then(function () {
@@ -25,6 +26,7 @@ function index({ handleOpenSettings }) {
                         link.href = dataURL2;
                         link.click();
                         setDownloadStatus('idle');
+                        targetNode?.classList.remove('saving');
                         return dataURL2;
                     })
                 })
@@ -41,11 +43,6 @@ function index({ handleOpenSettings }) {
     )
 }
 
-
-function Button({ action, title }) {
-
-    return <button onClick={action}>{title}</button>
-}
 
 
 export default index

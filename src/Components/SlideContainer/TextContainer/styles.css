@@ -6,23 +6,6 @@ h3 {
     margin: 0px;
 }
 
-form {
-    padding: 0px;
-    margin: 0px;
-    width: 100%;
-    input {
-        width: 100%;
-        border-style: none;
-        text-align: center;
-        font-weight: bold;
-        background-color: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(5px);
-        outline: none;
-        text-shadow: 0px 0px 10px rgb(200, 200, 200);
-        border-radius: 5px;
-    }
-}
-
 /* Styling */
 .text-container {
     --font-family: "Arial";
@@ -135,6 +118,7 @@ form {
         /* width: 350px; */
         /* z-index: 1; */
         /* box-shadow: 0px 0px 5px 2px rgb(32, 32, 32); */
+        border: 1px solid grey;
         height: 45px;
         display: flex;
         /* border: 2px dashed rgb(189, 189, 189); */
@@ -144,24 +128,8 @@ form {
         left: 0px;
         align-items: center;
         background-color: rgba(0, 0, 0, 0.2);
-        /* border-bottom: 2px solid #e89c26; */
-        /* border-radius: 5px; */
         backdrop-filter: blur(5px);
         padding: 5px 2px;
-        /* box-sizing: content-box; */
-
-        /* animation: fadeIn 0.5s ease; */
-        /* &:before {
-            content: "";
-            position: absolute;
-            width: 10px;
-            transform: rotate(45deg);
-            bottom: -8px;
-            left: calc(50% - 5px);
-            background-color: #e89c26;
-            height: 10px;
-            z-index: -1;
-        } */
 
         > div,
         > span,
@@ -190,6 +158,7 @@ form {
         span {
             font-size: 10px;
             flex-shrink: 0;
+            font-family: Arial, Helvetica, sans-serif;
         }
         .color-option-container {
             height: 25px;
@@ -205,7 +174,7 @@ form {
             margin-right: 2px;
             border: 2px solid transparent;
             transition: 0.2s;
-            :hover {
+            &:hover {
                 border: 2px solid white;
             }
             .color-circle {
@@ -230,6 +199,24 @@ form {
                 top: -75px;
             }
         }
+    }
+}
+form {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+
+    input {
+        width: 100%;
+        border-style: none;
+        text-align: center;
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px) brightness(0.5);
+        outline: none;
+        text-shadow: 0px 0px 10px rgb(200, 200, 200);
+        border-radius: 5px;
+        border: 1px solid grey;
     }
 }
 

@@ -1,0 +1,12 @@
+.free-float {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.dragging {
+    transition: 0.3s;
+    opacity: 0;
+}

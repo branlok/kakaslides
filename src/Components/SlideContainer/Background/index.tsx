@@ -33,11 +33,16 @@ function BgImage() {
                 }%`;
             let x = `${_depth1}`;
             let newX = x.split(' ');
-            bottomLayer.current.style.transform = `scale(2) translate(${newX[0]}, ${newX[1]})`;
-            topLayer.current.style.transform = `scale(2) translate(-${newX[0]}, -${newX[1]})`;
+            bottomLayer.current.style.transform = `scale(1.5) translate(${newX[0]}, ${newX[1]})`;
+            topLayer.current.style.transform = `scale(1.5) translate(-${newX[0]}, -${newX[1]})`;
         }
         if (backgroundMotion === "Track Cursor") {
             document.addEventListener("mousemove", parallax);
+        } else {
+            // reset
+            bottomLayer.current.style.transform = `scale(1) translate(0px, 0px)`;
+            topLayer.current.style.transform = `scale(1) translate(0px, 0px)`;
+            document.removeEventListener("mousemove", parallax);
         }
         return () => document.removeEventListener("mousemove", parallax);
     }, [backgroundMotion]);
@@ -45,8 +50,8 @@ function BgImage() {
 
     return (
         <div ref={ref} className="overlay" >
-            <div ref={bottomLayer} className="overlay-1" style={{ backgroundImage: `url(${bottomImage})`, backgroundSize: bottomImageZoom, mixBlendMode: bottomImageBlend, animation: bottomImageSettings.noAnimation ? "none" : "SlideToRight 120s linear infinite", backgroundRepeat: bottomImageSettings.noRepeat ? "no-repeat" : "repeat", opacity: bottomImageSettings.opacity }}></div>
-            <div ref={topLayer} className="overlay-2" style={{ backgroundImage: `url(${topImage})`, backgroundSize: topImageZoom, mixBlendMode: topImageBlend, animation: topImageSettings.noAnimation ? "none" : "SlideToRight 120s linear infinite", backgroundRepeat: topImageSettings.noRepeat ? "no-repeat" : "repeat", opacity: topImageSettings.opacity }}></div>
+            <div ref={bottomLayer} className="overlay-1" style={{ backgroundImage: `url(${bottomImage})`, backgroundSize: bottomImageZoom, mixBlendMode: bottomImageBlend, animation: backgroundMotion === "Off" ? "none" : bottomImageSettings.noAnimation ? "none" : "SlideToRight 120s linear infinite", backgroundRepeat: bottomImageSettings.noRepeat ? "no-repeat" : "repeat", opacity: bottomImageSettings.opacity }}></div>
+            <div ref={topLayer} className="overlay-2" style={{ backgroundImage: `url(${topImage})`, backgroundSize: topImageZoom, mixBlendMode: topImageBlend, animation: backgroundMotion === "Off" ? "none" : topImageSettings.noAnimation ? "none" : "SlideToRight 120s linear infinite", backgroundRepeat: topImageSettings.noRepeat ? "no-repeat" : "repeat", opacity: topImageSettings.opacity }}></div>
             <div ref={screenLayer} className="bg-image-container" style={{ backgroundColor: colorFilter, mixBlendMode: blendMode }}></div>
         </div >
     )

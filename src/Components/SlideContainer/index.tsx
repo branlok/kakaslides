@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import kakaGlobalState from "../../store/slices/slideModifications"
 import "./styled.css"
 // import BgImage from "./BgImage";
@@ -7,12 +7,16 @@ import RegularLayout from "../Layouts/Regular/RegularLayout";
 import IdentityLayout from "../Layouts/Identity/IdentityLayout";
 import ExcerptLayout from "../Layouts/Excerpt/ExcerptLayout";
 import Background from "./Background";
+import layoutStore from "../../store/slices/layoutStore";
+import FreeTextbox from "./FreeTextbox";
 
 function SlideContainer() {
+    const layoutType = layoutStore(state => state.layout);
+    const setLayoutType = layoutStore(state => state.setLayout);
     const backgroundColor = kakaGlobalState(state => state.blackBarsVisual.backgroundColor);
     const height = kakaGlobalState(state => state.blackBarsVisual.height);
     const mySlide = useRef<HTMLElement>(null);
-    const [layoutType, setLayoutType] = React.useState("regular");
+    // const [layoutType, setLayoutType] = React.useState("regular");
 
     useEffect(() => {
         switch (window.location.pathname) {
@@ -23,7 +27,7 @@ function SlideContainer() {
                 setLayoutType('excerpt');
                 break;
             default:
-                setLayoutType('regular');
+                setLayoutType('default');
         }
 
     }, [])
@@ -39,7 +43,7 @@ function SlideContainer() {
         <div ref={mySlide} className='slide-container default-structure'>
             {/* <BgImage /> */}
             <Background />
-            {layoutType === "regular" && <RegularLayout />}
+            {layoutType === "default" && <RegularLayout />}
             {layoutType === "identity" && <IdentityLayout />}
             {layoutType === "excerpt" && <ExcerptLayout />}
         </div>

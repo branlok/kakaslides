@@ -39,7 +39,7 @@
             transform-origin: center;
             transform: scale(1.7) var(--rotate);
             transition: 0.15s;
-            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            background-image: url("'../../../assets/icon_thumb.png'");
             cursor: pointer;
         }
         &::-webkit-slider-thumb {
@@ -54,7 +54,7 @@
             background-size: cover;
             transition: 0.05s;
             transform: scale(1.7) var(--rotate);
-            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            background-image: url("'../../../assets/icon_thumb.png'");
             cursor: pointer;
         }
     }

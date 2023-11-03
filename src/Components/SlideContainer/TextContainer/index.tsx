@@ -1,8 +1,8 @@
 import React from 'react'
 import "./styles.css"
 // import WebFont from 'webfontloader';
-import { Github } from "@uiw/react-color"
 import kakaGlobalState from '../../../store/slices/slideModifications';
+import ColorPicker from './ColorPicker';
 type Props = {
     defaultText?: string
     defaultTextLayout?: "vertical" | "horizontal"
@@ -58,7 +58,7 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs", defaultText
             {hovering && !editMode && <CTA />}
             {editMode && <Tooltip fontColor={fontColor} setFontColor={setFontColor} turnOffEditMode={turnOffEditMode} parentContainer={ref} defaultFont={fontFamily} setCurrentFont={setFontFamily} />}
             {/* Toggle between EditMode and Presentation Mode */}
-            {editMode ? <EditForm text={text} size={size} saveNewText={saveNewTextAndTurnOffEditMode} /> : <PresentableText size={size} text={!contaminated ? defaultText : text} />}
+            {editMode ? <EditForm alignText={alignText} text={text} size={size} saveNewText={saveNewTextAndTurnOffEditMode} defaultText={!contaminated ? defaultText : text} /> : <PresentableText size={size} text={!contaminated ? defaultText : text} />}
         </div>
     )
 }
@@ -86,7 +86,7 @@ function CTA() {
     // return <div className="cta-message" ref={ref}>Click to Edit</div>
 }
 
-function Tooltip({ fontColor, setFontColor, turnOffEditMode, parentContainer, defaultFont, setCurrentFont }) {
+function Tooltip({ fontColor, setFontColor, turnOffEditMode, parentContainer, defaultFont, setCurrentFont, onClose }) {
     let [selectFont, setSelectFont] = React.useState(defaultFont);
     let currentState = useGoogleFonts(parentContainer, selectFont);
     let [revealColorPicker, setRevealColorPicker] = React.useState(false);
@@ -99,28 +99,27 @@ function Tooltip({ fontColor, setFontColor, turnOffEditMode, parentContainer, de
     }
 
     return <div ref={ref} className="edit-container">
-
         {currentState === "loading" ? <div>loading</div> : <select className="font-select" defaultValue={selectFont} onChange={switchFont}>
             {fontList.map(item => <option key={item} value={item}>{item}</option>)}
         </select>}
-
         <div className="color-option-container">
             <div className="color-circle" onClick={() => setRevealColorPicker(prev => !prev)}></div>
-            {revealColorPicker && <Github
-                colors={["#FFFFFF", "#000000", "#FCDEBE", "#D4D2A5", "#928779", "#5E5768", "#3A445D", "red", "#c6248d", "#3e7e74", "green", "purple", "#0f2d7a", "orange", "#135c47", "#818c1f"]}
-                placement='BottonRight'
-                className="color-picker"
-                color={fontColor}
-                onChange={(color) => setFontColor(color.hex)} />}
+            {revealColorPicker && <ColorPicker onSelect={(color) => setFontColor(color)} />
+            }
         </div>
 
-        <span>Press Enter to Exit</span>
+        <span onClick={turnOffEditMode}>Press Esc to Cancel</span>
 
     </div>
 }
-function EditForm({ text, size, saveNewText }) {
-    let [draftText, setDraftText] = React.useState(text);
-    let ref = React.useRef(null);
+function EditForm({ text, size, saveNewText, defaultText, alignText = 'center' }) {
+    let [draftText, setDraftText] = React.useState(defaultText);
+    let ref = React.useRef<HTMLInputElement>(null);
+
+    React.useEffect(() => {
+        ref.current.focus()
+    }, [])
+
     const updateText = (e) => {
         e.preventDefault()
         setDraftText(e.currentTarget.value)
@@ -131,15 +130,10 @@ function EditForm({ text, size, saveNewText }) {
         saveNewText(draftText)
     }
 
-    React.useEffect(() => {
-        if (ref.current) {
-            ref.current.focus()
-        }
-    }, [ref.current])
 
     return (
         <form onSubmit={SubmitForm}>
-            <input ref={ref} className={size} onChange={updateText} type="text" value={draftText}></input>
+            <input onKeyDown={(e) => { e.stopPropagation(); if (e.key === "Escape") { saveNewText(defaultText) } }} ref={ref} className={size} onChange={updateText} type="text" value={draftText} style={{ textAlign: alignText }}></input>
         </form>
     )
 }
@@ -164,43 +158,6 @@ function useGoogleFonts(ref, fontStyle) {
         console.log(fetchedSuccessfully, fontStyle, ref.current)
         if (fontStyle === "Arial") ref.current.style.setProperty("--font-family", fontStyle);
         if (ref.current && !fetchedSuccessfully.includes(fontStyle)) {
-
-            // WebFont.load({
-            //     google: {
-            //         families: [`${fontStyle}:400`]
-            //     },
-            //     loading: function () {
-            //         setCurrentState("loading")
-            //     },
-            //     active: function () {
-            //         setFetchedSuccessfully(prev => [...prev, fontStyle])
-            //         setCurrentState("success")
-            //         function appendFont(font: string, url: string) {
-            //             const fontCss = document.createElement("style");
-            //             const fontCssRule = `
-            //                           @font-face {
-            //                           font-family: "${font}";
-            //                           src: url("${url}"),
-            //                         }`;
-
-            //             fontCss.appendChild(document.createTextNode(fontCssRule));
-            //             document.head.appendChild(fontCss);
-            //         }
-            //         // appendFont(fontStyle, )
-            //     },
-            //     inactive: function () {
-            //     },
-            //     fontactive: function (familyName, fvd) {
-            //         const styleSheets = Array.from(document.styleSheets);
-
-            //         console.log(styleSheets);
-
-
-            //         console.log(Array.from(document.fonts));
-            //     }
-            // });
-            // var sheet = window.document.styleSheets[0];
-            // sheet.insertRule(`@font-face {font-family: '${fontStyle}'};`)
             ref.current.style.setProperty("--font-family", fontStyle);
         }
     }, [fontStyle, ref.current])

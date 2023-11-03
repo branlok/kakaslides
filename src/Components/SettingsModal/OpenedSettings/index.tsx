@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ColorOverlaySettings from "./ColorOverlaySettings";
 import LayerControl from "./LayerControl";
 import SelectorForm from "./SelectorForm";
@@ -8,8 +8,10 @@ import BlackBarCustomizer from "./SelectorForm/BlackBarCustomizer";
 import TextMotionSetting from "./SelectorForm/TextMotion";
 import * as htmlToImage from "html-to-image";
 import Close from "../../../assets/Close.svg"
+
 import "./styles.css";
 import InfoAndExternalLinks from "./InfoAndExternalLinks";
+import AlternativeLayout from "./SelectorForm/AlternativeLayout";
 function index({ handleCloseSettings }) {
     let [saving, setSaving] = useState(false);
     const handleSaveSlide = () => {
@@ -34,9 +36,21 @@ function index({ handleCloseSettings }) {
                 })
             })
         }, 200)
-
-
     }
+
+    useEffect(() => {
+        // listen for exit to collapse settings
+        const handleEsc = (e) => {
+            if (e.key == "Escape") {
+                handleCloseSettings();
+            }
+        }
+        document.body.addEventListener('keydown', handleEsc)
+
+        return () => {
+            document.body.removeEventListener('keydown', handleEsc);
+        }
+    }, [])
 
     return (
         <>
@@ -56,6 +70,9 @@ function index({ handleCloseSettings }) {
                 </SelectorForm>
                 <SelectorForm layerName="Blackbar Customizer">
                     <BlackBarCustomizer />
+                </SelectorForm>
+                <SelectorForm layerName="Alternative Layout">
+                    <AlternativeLayout />
                 </SelectorForm>
                 <InfoAndExternalLinks />
             </div >

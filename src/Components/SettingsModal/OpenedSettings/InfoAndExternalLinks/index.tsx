@@ -46,10 +46,10 @@ function index() {
             <div className="sticker-box" >
                 <ul ref={ref} >
                     <li>
-                        <a href=""><img src={Kofi} alt="" /> <span> Commision / Support</span></a>
+                        <a href="https://ko-fi.com/mixopixo#paypalModal" target="_blank"><img src={Kofi} alt="" /> <span> Commision / Support</span></a>
                     </li>
                     <li>
-                        <a href=""><img src={Github} alt="" /> <span> See Code </span></a>
+                        <a href="https://github.com/branlok/kakaslides/tree/remake" target="_blank"><img src={Github} alt="" /> <span> See Code </span></a>
                     </li>
                 </ul>
             </div>

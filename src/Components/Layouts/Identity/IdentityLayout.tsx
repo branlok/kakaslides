@@ -7,7 +7,7 @@ function IdentityLayout() {
 
     return (
         <>
-            <TextContainer defaultText={"〈物語〉"} defaultTextLayout={"vertical"} defaultSize={"md"} />
+            <TextContainer defaultText={"〈物語〉"} defaultTextLayout={"vertical"} defaultSize={"sm"} />
             <div className="bottom-text">
                 <TextContainer defaultText={"⏶"} defaultSize="xxs" />
                 <TextContainer defaultText={"4K09"} defaultSize="xxs" />

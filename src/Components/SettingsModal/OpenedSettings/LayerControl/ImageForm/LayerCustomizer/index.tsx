@@ -24,6 +24,7 @@ function index({ position, onExit }) {
 
     const handleOpacityChange = (e) => {
         e.preventDefault();
+        e.currentTarget.style.setProperty('--rotate', `rotate(${e.currentTarget.value * 2.4}deg)`)
         setImageSettings(e.currentTarget.value / 100, position, 'opacity')
     }
 
@@ -32,11 +33,6 @@ function index({ position, onExit }) {
             ref.current.style.setProperty("--image-url", `url(${imageURL})`)
         }
     }, [imageURL])
-
-    // handlers
-    let handleReplaceImage = () => {
-
-    }
 
     let handleDeleteAndReset = () => {
         setImage(null, position);
@@ -56,11 +52,11 @@ function index({ position, onExit }) {
                     </select>
                 </div>
             </div>
-            <form className="group highlight" onSubmit={(e) => e.preventDefault()}>
+            <form className="group highlight" onSubmit={(e) => e.preventDefault()} >
                 <label htmlFor="no-repeat">No Repeat</label>
-                <input type="checkbox" name="no-repeat" value={imageSettings.noRepeat} onClick={() => setImageSettings(!imageSettings.noRepeat, position, 'noRepeat')} />
+                <input type="checkbox" name="no-repeat" value={imageSettings.noRepeat} defaultChecked={imageSettings.noRepeat} onClick={() => setImageSettings(!imageSettings.noRepeat, position, 'noRepeat')} />
                 <label htmlFor="no-animation">No Animation</label>
-                <input type="checkbox" name="no-animation" value={imageSettings.noAnimation} onClick={() => setImageSettings(!imageSettings.noAnimation, position, 'noAnimation')} />
+                <input type="checkbox" name="no-animation" value={imageSettings.noAnimation}  defaultChecked={imageSettings.noAnimation}  onClick={() => setImageSettings(!imageSettings.noAnimation, position, 'noAnimation')} />
             </form>
             <div className="group">
                 <label htmlFor="">Opacity</label>

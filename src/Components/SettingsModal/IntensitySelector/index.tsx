@@ -2,7 +2,6 @@
 import './styles.css';
 import kakaGlobalState from '../../../store/slices/slideModifications';
 
-
 function IntensitySelector() {
     const setIntensity = kakaGlobalState((state) => state.setIntensity);
     const intensity = kakaGlobalState((state) => state.intensity);

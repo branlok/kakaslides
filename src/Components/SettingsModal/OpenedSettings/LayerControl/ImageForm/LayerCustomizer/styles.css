@@ -85,7 +85,9 @@
     }
     .group.highlight {
         background-color: black;
-        padding: 5px;
+        padding: 2px 15px;
+        margin: 5px 0px;
+        border-radius: 20px;
     }
     form {
         justify-content: flex-end;
@@ -110,6 +112,7 @@
         padding: 0px 2px;
         /* height: 30px; */
         select {
+         
             height: 100%;
             width: 100%;
             padding: 0px 5px;
@@ -134,20 +137,22 @@
         border-radius: 50px;
         /* transition: 0.4s; */
         margin-left: 10px;
+        z-index: 2;
         &::-moz-range-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 25px;
-            height: 25px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            border: 1px solid transparent;
+            /* border: 1px solid transparent; */
             background-color: transparent;
             background-size: cover;
             transform-origin: center;
-            transform: scale(1.7) var(--rotate);
+            transform: scale(1) var(--rotate);
             transition: 0.15s;
-            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            background-image: url("../../../../../../assets/icon_thumb.png");
             cursor: pointer;
+         
         }
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -155,13 +160,14 @@
             width: 25px;
             height: 25px;
             border-radius: 50%;
-            border: 1px solid transparent;
+            /* border: 1px solid transparent; */
             background-color: transparent;
             transform-origin: center;
             background-size: cover;
             transition: 0.05s;
-            transform: scale(1.7) var(--rotate);
-            background-image: url("https://images.getbento.com/accounts/bacb3d376d1f873d048bc6af1d31b0c2/media/images/65525logo-icon-opt_mochinut.png");
+            
+            transform: scale(1) var(--rotate);
+            background-image: url("../../../../../../assets/icon_thumb.png");
             cursor: pointer;
         }
     }

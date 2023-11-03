@@ -7,8 +7,8 @@ import useMediaStore from "../../../../../store/slices/mediaStore";
 import LayerCustomizer from "./LayerCustomizer";
 // Switch state between 'Request for Image' and 'Configure Image'
 function index({ position }) {
-    let [page, setPage] = useState<"requesting" | "readyCustomization">('requesting')
     let image = useMediaStore(state => state[position]);
+    let [page, setPage] = useState<"requesting" | "readyCustomization">(image ? 'readyCustomization' : 'requesting')
     let Wizard;
 
     switch (page) {
