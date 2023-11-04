@@ -28,7 +28,7 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs", defaultText
 
     React.useEffect(() => {
         if (ref.current) {
-            console.log('this ran')
+
             ref.current.style.setProperty(
                 '--text-color', fontColor);
         }

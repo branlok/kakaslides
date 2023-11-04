@@ -15,7 +15,6 @@ function index({ defaultValue }) {
         const length = TEXTBOX_BOUNDARIES.length;
         setTextBoxBoundaryChoice(prev => TEXTBOX_BOUNDARIES[(TEXTBOX_BOUNDARIES.indexOf(prev) + 1) % length]);
     }
-    console.log(textBoxBoundaryChoice)
 
     return (
         <button className={classes.toggleContainer} onClick={handleClick}>

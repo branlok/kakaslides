@@ -7,7 +7,7 @@ function index({ images, onClick }: Props) {
     let visibleChoices = images.slice(startEnd[0], startEnd[1] < startEnd[0] ? undefined : startEnd[1]);
     if (visibleChoices.length < 5) {
         visibleChoices = [...visibleChoices, ...images.slice(0, startEnd[1])]
-        console.log(visibleChoices, startEnd)
+
     }
 
 

@@ -25,7 +25,7 @@ function TextContainer({ defaultText = "My Guy", defaultSize = "xs", defaultText
 
     React.useEffect(() => {
         if (ref.current) {
-            console.log('this ran')
+
             ref.current.style.setProperty(
                 '--text-color', fontColor);
         }
@@ -155,7 +155,7 @@ function useGoogleFonts(ref, fontStyle) {
     const [fetchedSuccessfully, setFetchedSuccessfully] = React.useState<string[]>(['Arial']);
     const [currentState, setCurrentState] = React.useState("success");
     React.useEffect(() => {
-        console.log(fetchedSuccessfully, fontStyle, ref.current)
+
         if (fontStyle === "Arial") ref.current.style.setProperty("--font-family", fontStyle);
         if (ref.current && !fetchedSuccessfully.includes(fontStyle)) {
             ref.current.style.setProperty("--font-family", fontStyle);

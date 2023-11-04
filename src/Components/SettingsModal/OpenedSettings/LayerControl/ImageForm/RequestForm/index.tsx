@@ -53,7 +53,7 @@ function index({ position, onComplete }) {
         if (image) {
             // save file as objectUrl
             const BGURL = URL.createObjectURL(sanitizedImage);
-            console.log(BGURL, position);
+
             setImage(BGURL, position)
             onComplete();
         } else {
@@ -63,7 +63,7 @@ function index({ position, onComplete }) {
 
     const handlePickStorage = (e) => {
         let src = e.currentTarget.src;
-        console.log(src, position);
+
         setImage(src, position)
         onComplete();
 
@@ -77,7 +77,7 @@ function index({ position, onComplete }) {
                 if (image) {
                     // save file as objectUrl
                     const BGURL = URL.createObjectURL(image);
-                    console.log(BGURL, position);
+
                     setImage(BGURL, position)
                     onComplete();
                 } else {
