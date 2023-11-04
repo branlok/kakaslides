@@ -42,7 +42,7 @@ function index() {
     }, [])
     return (
         <div className="external-wrapper">
-            <footer>Kakaslide Copyright 2023</footer>
+            <footer>Kakaslides Copyright 2023</footer>
             <div className="sticker-box" >
                 <ul ref={ref} >
                     <li>

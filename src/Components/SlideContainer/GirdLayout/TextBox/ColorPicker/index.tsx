@@ -2,7 +2,7 @@ import './styles.css';
 type Props = {}
 
 function index({ onSelect }) {
-    const colors = ['white', 'black', '#FFC857', '#E9724C', '#C5283D', '#481D24', '#255F85', 'brown'];
+    const colors = ['white', 'black', 'orange', 'red', 'blue', 'green', 'purple', 'brown'];
     return (
         <div className="color-palette">
             {colors.map(item => {

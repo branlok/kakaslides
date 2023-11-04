@@ -1,6 +1,6 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import RequestForm from "./RequestForm";
 import useMediaStore from "../../../../../store/slices/mediaStore";
@@ -9,6 +9,11 @@ import LayerCustomizer from "./LayerCustomizer";
 function index({ position }) {
     let image = useMediaStore(state => state[position]);
     let [page, setPage] = useState<"requesting" | "readyCustomization">(image ? 'readyCustomization' : 'requesting')
+    useEffect(() => {
+        setPage(image ? 'readyCustomization' : 'requesting');
+    }, [image])
+
+
     let Wizard;
 
     switch (page) {
@@ -31,7 +36,7 @@ function index({ position }) {
 
     return (
         <div className="image-form">
-            {page === "requesting" ? <Wizard position={position} onComplete={handleNextStep} /> : <LayerCustomizer position={position} onExit={handleExit}/>}
+            {page === "requesting" ? <Wizard position={position} onComplete={handleNextStep} /> : <LayerCustomizer position={position} onExit={handleExit} />}
         </div>
     )
 }

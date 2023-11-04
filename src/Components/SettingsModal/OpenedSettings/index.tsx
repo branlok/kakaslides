@@ -12,6 +12,7 @@ import Close from "../../../assets/Close.svg"
 import "./styles.css";
 import InfoAndExternalLinks from "./InfoAndExternalLinks";
 import AlternativeLayout from "./SelectorForm/AlternativeLayout";
+import Presets from "./Presets";
 function index({ handleCloseSettings }) {
     let [saving, setSaving] = useState(false);
     const handleSaveSlide = () => {
@@ -59,6 +60,9 @@ function index({ handleCloseSettings }) {
                 <h1 className="settings-title"><div className="cta-wrapper">   <button className="close-button" onClick={handleCloseSettings}><img src={Close} alt="" /></button><button className="export-button" disabled={saving} onClick={handleSaveSlide}> {saving ? "Saving" : "Export"} </button></div> Customize Scene</h1>
                 {/* Holds Setting Groups */}
                 <ColorOverlaySettings />
+                <SelectorForm layerName="Presets">
+                    <Presets />
+                </SelectorForm>
                 <LayerControl layerName="Top Layer" />
                 <LayerControl layerName="Bottom Layer" />
                 <hr />

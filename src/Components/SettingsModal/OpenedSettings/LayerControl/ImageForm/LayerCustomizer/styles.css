@@ -75,6 +75,12 @@
             /* round off */
             border-radius: 5px;
         }
+        &[data-step-level="5"]:after {
+            width: 100%;
+            /* round off */
+            background-color: rgba(255, 58, 48, 0.8);
+            border-radius: 5px;
+        }
         span {
             z-index: 1;
         }

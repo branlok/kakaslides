@@ -9,6 +9,7 @@ import ExcerptLayout from "../Layouts/Excerpt/ExcerptLayout";
 import Background from "./Background";
 import layoutStore from "../../store/slices/layoutStore";
 import FreeTextbox from "./FreeTextbox";
+import GirdLayout from "./GirdLayout";
 
 function SlideContainer() {
     const layoutType = layoutStore(state => state.layout);
@@ -43,6 +44,7 @@ function SlideContainer() {
         <div ref={mySlide} className='slide-container default-structure'>
             {/* <BgImage /> */}
             <Background />
+            {/* <GirdLayout /> */}
             {layoutType === "default" && <RegularLayout />}
             {layoutType === "identity" && <IdentityLayout />}
             {layoutType === "excerpt" && <ExcerptLayout />}

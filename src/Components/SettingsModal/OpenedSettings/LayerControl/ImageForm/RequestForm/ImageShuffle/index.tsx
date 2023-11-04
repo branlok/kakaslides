@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 type Props = {}
 
 function index({ images, onClick }: Props) {
@@ -16,10 +15,11 @@ function index({ images, onClick }: Props) {
         setStartEnd(prev => [(prev[0] + 5) % images.length, (prev[1] + 5) % images.length]);
     }
 
-
+    
     return (
         <>
             <p>or pick from our storage  <span><u onClick={handleShift}>shuffle</u></span></p>
+
             <div>{visibleChoices.map((item, idx) => {
                 return <img onClick={onClick} src={item} key={item} />
             })}</div></>

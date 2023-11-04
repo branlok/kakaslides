@@ -1,0 +1,33 @@
+.color-palette {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 30px;
+    position: absolute;
+    top: -45px;
+    border: 2px solid white;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: calc(50% - 10px);
+        height: 20px;
+        width: 20px;
+        transform: rotate(45deg);
+        z-index: -1;
+        background-color: white;
+    }
+    .color {
+        flex: 1 1;
+        /* height: 30px; */
+        width: 30px;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        transition: 0.1s;
+        &:hover {
+            width: 40px;
+            border-top: 4px solid black;
+            border-bottom: 4px solid black;
+        }
+    }
+}

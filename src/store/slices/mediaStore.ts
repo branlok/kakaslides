@@ -24,7 +24,8 @@ type SlideAppearance = {
     mediaURL: string;
     topImage: string | null;
     bottomImage: string | null;
-    setImageSettings: (str: string, position: string, attri: string) => void,
+    setImageSettings: (str: string | boolean, position: string, attri: string) => void;
+    setNewBlendMode: (str: string, position: string) => void;
     setImage: (str: string, position: Positions) => void;
     setImageZoom: (str: string, position: Positions) => void;
 };

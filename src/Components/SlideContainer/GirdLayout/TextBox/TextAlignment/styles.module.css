@@ -1,0 +1,20 @@
+.toggle-container {
+    height: 30px;
+    width: 30px;
+    margin-left: 3px;
+    padding: 0px;
+    background-color: transparent;
+    border-style: none;
+    border-radius: 3px;
+    background-color: rgb(224, 224, 224);
+    transition: 0.2s;
+    border-radius: 5px;
+    border: 2px solid white;
+    &:hover {
+        transform: scale(0.98);
+    }
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}

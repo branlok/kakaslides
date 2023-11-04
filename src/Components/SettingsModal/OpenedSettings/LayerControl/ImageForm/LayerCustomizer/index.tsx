@@ -45,7 +45,7 @@ function index({ position, onExit }) {
             <div className="group">
                 <StepUpButton position={position} />
                 <div className="mix-blend">
-                    <select name="" id="" onChange={handleBlendModeChange} defaultValue={blendMode}>
+                    <select name="" id="" onChange={handleBlendModeChange} value={blendMode}>
                         {BLEND_MODES.map(item => {
                             return <option key={item} value={item}>{item}</option>
                         })}
@@ -54,9 +54,9 @@ function index({ position, onExit }) {
             </div>
             <form className="group highlight" onSubmit={(e) => e.preventDefault()} >
                 <label htmlFor="no-repeat">No Repeat</label>
-                <input type="checkbox" name="no-repeat" value={imageSettings.noRepeat} defaultChecked={imageSettings.noRepeat} onClick={() => setImageSettings(!imageSettings.noRepeat, position, 'noRepeat')} />
-                <label htmlFor="no-animation">No Animation</label>
-                <input type="checkbox" name="no-animation" value={imageSettings.noAnimation}  defaultChecked={imageSettings.noAnimation}  onClick={() => setImageSettings(!imageSettings.noAnimation, position, 'noAnimation')} />
+                <input type="checkbox" name="no-repeat" checked={imageSettings.noRepeat} defaultChecked={imageSettings.noRepeat} onClick={() => setImageSettings(!imageSettings.noRepeat, position, 'noRepeat')} />
+                <label htmlFor="no-animation">No Sliding</label>
+                <input type="checkbox" name="no-animation" checked={imageSettings.noAnimation}   onClick={() => setImageSettings(!imageSettings.noAnimation, position, 'noAnimation')} />
             </form>
             <div className="group">
                 <label htmlFor="">Opacity</label>

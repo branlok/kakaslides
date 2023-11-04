@@ -21,7 +21,6 @@ function BgImage() {
     let topLayer = useRef(null);
     let bottomLayer = useRef(null);
 
-
     useEffect(() => {
         // track mouse movement;
         function parallax(e) {
@@ -29,6 +28,7 @@ function BgImage() {
             let _h = window.innerHeight / 2;
             let _mouseX = e.clientX;
             let _mouseY = e.clientY;
+
             let _depth1 = `${10 - (_mouseX - _w) * -0.01}% ${10 - (_mouseY - _h) * -0.01
                 }%`;
             let x = `${_depth1}`;
@@ -36,12 +36,17 @@ function BgImage() {
             bottomLayer.current.style.transform = `scale(1.5) translate(${newX[0]}, ${newX[1]})`;
             topLayer.current.style.transform = `scale(1.5) translate(-${newX[0]}, -${newX[1]})`;
         }
+
         if (backgroundMotion === "Track Cursor") {
+
+            bottomLayer.current.style.transform = `scale(1.5)`;
+            topLayer.current.style.transform = `scale(1.5)`;
             document.addEventListener("mousemove", parallax);
         } else {
             // reset
             bottomLayer.current.style.transform = `scale(1) translate(0px, 0px)`;
             topLayer.current.style.transform = `scale(1) translate(0px, 0px)`;
+
             document.removeEventListener("mousemove", parallax);
         }
         return () => document.removeEventListener("mousemove", parallax);
